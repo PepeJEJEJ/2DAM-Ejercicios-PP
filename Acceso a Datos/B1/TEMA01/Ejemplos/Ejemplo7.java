@@ -7,9 +7,12 @@ public class Ejemplo7 {
                     "C:\\Users\\PC128\\Documents\\JIJA\\2 dam\\2DAM-Ejercicios\\Acceso a Datos\\B1\\TEMA01\\Ejemplos\\abecedario.txt",
                     "r");
             file.seek(5);
-            byte[] arrayBites = new byte[3];
-            file.read(arrayBites, 0, 3);
-            System.out.println("Bytes leidos: " + arrayBites.length);
+            byte[] arrayBytes = new byte[3];
+            file.read(arrayBytes, 0, 3);
+            System.out.println("Bytes leidos: " + arrayBytes.length);
+            for (int i = 0; i < arrayBytes.length; i++) {
+                System.out.println("  arrayBytes[" + i + "] = " + arrayBytes[i] + " -> '" + (char) arrayBytes[i] + "'");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
