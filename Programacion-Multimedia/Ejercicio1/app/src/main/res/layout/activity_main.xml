@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="394dp" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="167dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="50dp"
+        android:text="Iniciar Sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.371"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="366dp"
+        android:layout_height="91dp"
+        app:srcCompat="@drawable/instagram_wordmark__2026_"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="147dp" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -22,31 +33,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="317dp" />
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="303dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <EditText
+        android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="154dp" />
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="382dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="227dp"
-        android:layout_height="94dp"
-        android:text="INSTAGRAM"
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="192dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Iniciar Sesion"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="470dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
