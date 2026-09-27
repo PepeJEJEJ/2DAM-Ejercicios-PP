@@ -5,7 +5,6 @@ public class Ejercicio4 {
         try {
             BufferedInputStream BIS = new BufferedInputStream(new FileInputStream("Imagen.png"));
             BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream("Buffer_Imagen.png"));
-            int c;
             byte[] buffer = new byte[1024];
             int bytesLeidos;
             int bloque = 1;
