@@ -16,7 +16,7 @@ public class Ejercicio1 {
             }
             p.destroy();
         } catch (Exception e) {
-            System.err.println("Nel");
+            System.err.println("Nel "+e);
         }
     }
 }
