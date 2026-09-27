@@ -40,7 +40,7 @@ public class Ejercicio5 {
             sc.close();
 
         } catch (IOException | InterruptedException e) {
-            System.err.println("Nel");
+            System.err.println("Nel "+e);
         }
     }
 }
