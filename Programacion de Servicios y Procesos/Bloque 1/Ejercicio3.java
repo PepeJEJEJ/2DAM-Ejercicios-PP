@@ -11,7 +11,7 @@ public class Ejercicio3 {
             ProcessBuilder edge = new ProcessBuilder(rutaEdge,url);
             edge.start();
         } catch (IOException e) {
-            System.err.println("Nel");
+            System.err.println("Nel "+e);
         }
     }
 }
