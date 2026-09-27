@@ -8,7 +8,7 @@ public class Ejercicio6 {
             Thread.sleep(5000);
             new ProcessBuilder("cmd.exe", "/c", "taskkill /F /IM calc.exe").start();
         } catch (Exception e) {
-            System.err.println("Nel");
+            System.err.println("Nel "+e);
         }
     }
 }
