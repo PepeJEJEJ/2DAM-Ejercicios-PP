@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jList1">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -25,9 +52,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="358" max="32767" attributes="0"/>
           </Group>
-          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="AceptarBoton" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,8 +75,10 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="201" max="-2" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <Component id="AceptarBoton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,34 +89,89 @@
         <Property name="text" type="java.lang.String" value="Idiomas"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jSpinner1" alignment="0" pref="398" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="248" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
+        <Component class="javax.swing.JList" name="jList2">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="59">
+                <StringItem index="0" value="Afrik&#xe1;ans"/>
+                <StringItem index="1" value="Alban&#xe9;s"/>
+                <StringItem index="2" value="Am&#xe1;rico"/>
+                <StringItem index="3" value="&#xc1;rabe"/>
+                <StringItem index="4" value="Azerbaiyano (latino)"/>
+                <StringItem index="5" value="Euskera"/>
+                <StringItem index="6" value="B&#xfa;lgaro"/>
+                <StringItem index="7" value="Catal&#xe1;n"/>
+                <StringItem index="8" value="Chino simplificado"/>
+                <StringItem index="9" value="Chino tradicional"/>
+                <StringItem index="10" value="Croata"/>
+                <StringItem index="11" value="Checo"/>
+                <StringItem index="12" value="Dan&#xe9;s"/>
+                <StringItem index="13" value="Neerland&#xe9;s"/>
+                <StringItem index="14" value="Ingl&#xe9;s (Reino Unido)"/>
+                <StringItem index="15" value="English (Estados Unidos)"/>
+                <StringItem index="16" value="Estonio"/>
+                <StringItem index="17" value="Filipino"/>
+                <StringItem index="18" value="Fin&#xe9;s"/>
+                <StringItem index="19" value="Franc&#xe9;s"/>
+                <StringItem index="20" value="Franc&#xe9;s (Canad&#xe1;)"/>
+                <StringItem index="21" value="Gallego"/>
+                <StringItem index="22" value="Alem&#xe1;n"/>
+                <StringItem index="23" value="Griego"/>
+                <StringItem index="24" value="Hebreo"/>
+                <StringItem index="25" value="Hindi"/>
+                <StringItem index="26" value="H&#xfa;ngaro"/>
+                <StringItem index="27" value="Island&#xe9;s"/>
+                <StringItem index="28" value="Indonesio"/>
+                <StringItem index="29" value="Italiano"/>
+                <StringItem index="30" value="Japon&#xe9;s"/>
+                <StringItem index="31" value="Canar&#xe9;s"/>
+                <StringItem index="32" value="Kazajo"/>
+                <StringItem index="33" value="Khmer"/>
+                <StringItem index="34" value="Coreano"/>
+                <StringItem index="35" value="Lao"/>
+                <StringItem index="36" value="Let&#xf3;n"/>
+                <StringItem index="37" value="Lituano"/>
+                <StringItem index="38" value="Macedonio"/>
+                <StringItem index="39" value="Malayo"/>
+                <StringItem index="40" value="Malayalam"/>
+                <StringItem index="41" value="Noruego (Bokm&#xe5;l)"/>
+                <StringItem index="42" value="Espa&#xf1;ol"/>
+                <StringItem index="43" value="Espa&#xf1;ol (Am&#xe9;rica Latina)"/>
+                <StringItem index="44" value="Polaco"/>
+                <StringItem index="45" value="Portugu&#xe9;s (Brasil)"/>
+                <StringItem index="46" value="Portugu&#xe9;s (Portugal)"/>
+                <StringItem index="47" value="Rumano"/>
+                <StringItem index="48" value="Ruso"/>
+                <StringItem index="49" value="Eslovaco"/>
+                <StringItem index="50" value="Esloveno"/>
+                <StringItem index="51" value="Serbio (latino)"/>
+                <StringItem index="52" value="Sueco"/>
+                <StringItem index="53" value="Tamil"/>
+                <StringItem index="54" value="Telugu"/>
+                <StringItem index="55" value="Tailand&#xe9;s"/>
+                <StringItem index="56" value="Turco"/>
+                <StringItem index="57" value="Ucraniano"/>
+                <StringItem index="58" value="Vietnamita"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="AceptarBoton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
