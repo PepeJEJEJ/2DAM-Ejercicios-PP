@@ -6,7 +6,6 @@ public class Ejercicio2 {
             Thread.sleep(5000); //CINCO SEGUNDOS
             p.destroy(); //TERMINAR
         } catch (Exception e) {
-            System.err.println("Nel "+e);
         }
     }
 }

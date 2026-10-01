@@ -25,7 +25,7 @@ public class Ejercicio4 {
             }
             sc.close();
         } catch (IOException e) {
-            System.err.println("Nel "+e);
+            System.err.println("Nel");
         }
     }
 }
