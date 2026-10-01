@@ -4,17 +4,10 @@ public class Ejercicio8 {
 
     public static Boolean comprobarProceso(String nombreProceso) {
         try {
-            ProcessBuilder pb = new ProcessBuilder(
-                    "powershell.exe",
-                    "-Command",
-                    "Get-Process"
-            );
-
+            ProcessBuilder pb = new ProcessBuilder("powershell.exe","-Command","Get-Process");
             Process p = pb.start();
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader(p.getInputStream())
-            );
-
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            
             String linea;
             while ((linea = br.readLine()) != null) {
                 if (linea.contains(nombreProceso)) {
