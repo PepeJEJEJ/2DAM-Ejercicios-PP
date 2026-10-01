@@ -8,7 +8,8 @@ public class Lanzador {
             System.out.println("Soy la clase principal.");
 
             String java = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-
+            //Tambien puede usarse String java = ProcessHandle.current().info().command().orElse("Java");
+            //Que es lo mismo que el system.getProperty pero mas simple
             String cp = System.getProperty("java.class.path");
 
             ProcessBuilder pb = new ProcessBuilder(java, "-cp", cp, "Saludo");
