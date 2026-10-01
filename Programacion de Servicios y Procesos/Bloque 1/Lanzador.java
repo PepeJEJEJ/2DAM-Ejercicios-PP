@@ -7,8 +7,7 @@ public class Lanzador {
         try {
             System.out.println("Soy la clase principal.");
 
-            String java = System.getProperty("java.home")
-                    + File.separator + "bin" + File.separator + "java";
+            String java = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
 
             String cp = System.getProperty("java.class.path");
 
@@ -17,9 +16,7 @@ public class Lanzador {
 
             Process hijo = pb.start();
 
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(hijo.getInputStream())
-            );
+            BufferedReader reader = new BufferedReader(new InputStreamReader(hijo.getInputStream()));
 
             String linea;
             while ((linea = reader.readLine()) != null) {
