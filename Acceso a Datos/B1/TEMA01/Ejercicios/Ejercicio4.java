@@ -17,7 +17,7 @@ public class Ejercicio4 {
             BIS.close();
             BOS.close();
             System.out.println("TODO FUE BIEN");
-            System.out.println("Bytes Leidos: " + bloque);
+            System.out.println("Bytes Leidos: " + bloque + bytesLeidos);
         } catch (Exception e) {
             System.out.println("error " + e);
         }
