@@ -4,7 +4,7 @@ public class Ejercicio4 {
     public static void main(String[] args) {
         try {
             BufferedInputStream BIS = new BufferedInputStream(new FileInputStream("Imagen.png"));
-            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream("Buffer_Imagen.png"));
+            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream("C:\\Users\\PC128\\Documents\\JIJA\\2dam\\2DAM-Ejercicios\\Acceso a Datos\\B1\\TEMA01\\Ejercicios\\Resultados\\Buffer_Imagen.png"));
             byte[] buffer = new byte[1024];
             int bytesLeidos;
             int bloque = 1;
