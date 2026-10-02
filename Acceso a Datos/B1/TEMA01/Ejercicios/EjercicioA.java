@@ -14,7 +14,7 @@ public class EjercicioA {
                 long bytes = ficheroD.length(); // length() devuelve el tamaño en bytes
                 System.out.println("El fichero tiene " + bytes + " bytes");//PODREMOS VER ACA LOS BYTES
             } else {
-                System.out.println("No se pudo");//SI no sale bien
+                System.out.println("No se pudo");//SI NO sale bien
             }
         } catch (Exception e) {
             System.err.println("Fallo " + e);
