@@ -1,3 +1,4 @@
+package Ejemplos.ejemplo1;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -8,7 +9,7 @@ public class parserDOM {
     public static void main(String[] args) {
 
         try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();//
             // Validar el documento e ignorar espacios en blanco "sueltos"
             factory.setValidating(true);
             factory.setIgnoringElementContentWhitespace(true);
