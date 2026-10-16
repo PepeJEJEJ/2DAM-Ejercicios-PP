@@ -16,7 +16,7 @@ public class DomExcepciones {
 
     public static void main(String[] args) {
 
-        String fichero   = "equipos.xml";        // PRUEBAS 1, 2 y 7
+        String fichero   = "no_hay.xml";        // PRUEBAS 1, 2 y 7
         String etiqueta  = "nombre";             // PRUEBA 3
         String atributo  = "ciudad";             // PRUEBA 4
         String expresion = "/equipos/equipo";    // PRUEBAS 5 y 6

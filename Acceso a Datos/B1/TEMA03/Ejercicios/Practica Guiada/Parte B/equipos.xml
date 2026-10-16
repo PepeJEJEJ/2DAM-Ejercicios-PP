@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE equipos [
+    <!ELEMENT equipos (equipo+)>
+    <!ELEMENT equipo (nombre)>
+    <!ATTLIST equipo ciudad CDATA #REQUIRED>
+    <!ELEMENT nombre (#PCDATA)>
+]>
+
+<equipos>
+    <equipo ciudad="Sevilla">
+        <nombre>Real Betis</nombre>
+    </equipo>
+
+    <equipo ciudad="Madrid">
+        <nombre>Atlético de Madrid</nombre>
+    </equipo>
+
+    <equipo ciudad="Barcelona">
+        <nombre>Mierdalona C.F</nombre>
+    </equipo>
+
+    <equipo ciudad="Madrid">
+        <nombre>Real Madrid</nombre>
+    </equipo>
+    <equipo ciudad="Sevilla">
+        <nombre>Sevilla Fútbol Club</nombre>
+    </equipo>
+</equipos>
