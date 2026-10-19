@@ -216,7 +216,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song1" />
+                        android:src="@drawable/song3" />
 
                     <!-- Título + artista -->
                     <LinearLayout
@@ -281,7 +281,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song1" />
+                        android:src="@drawable/song4" />
 
                     <!-- Título + artista -->
                     <LinearLayout
@@ -346,7 +346,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song1" />
+                        android:src="@drawable/song5" />
 
                     <!-- Título + artista -->
                     <LinearLayout
