@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="azul_neon">#00BFFF</color>
+    <color name="spotify_black">#000000</color>
+    <color name="spotify_dark">#121212</color>
+    <color name="spotify_gray">#B3B3B3</color>
+    <color name="spotify_green">#1DB954</color>
+    <color name="white">#2d722c</color>
+    <string name="app_name">Spotify</string>
+    <string name="creator_name">Creada por José</string>
+    <string name="playlist_duration">2 h 35 min</string>
+    <string name="playlist_name">Mi Playlist</string>
+    <string name="song1_artist">Héroes del Silencio</string>
+    <string name="song1_duration">3:20</string>
+    <string name="song1_title">Maldito Duende</string>
+    <string name="song2_artist">Queen</string>
+    <string name="song2_duration">3:24</string>
+    <string name="song2_title">Bohemian Rhapsody</string>
+    <string name="song3_artist">Guns N' Roses</string>
+    <string name="song3_duration">3:59</string>
+    <string name="song3_title">Welcome to the Jungle</string>
+    <string name="song4_artist">DragonForce</string>
+    <string name="song4_duration">2:45</string>
+    <string name="song4_title">Through the Fire and Flames</string>
+    <string name="song5_artist">ZZTop</string>
+    <string name="song5_duration">2:53</string>
+    <string name="song5_title">La Grange</string>
+    <string name="song6_artist">Europe</string>
+    <string name="song6_duration">3:27</string>
+    <string name="song6_title">The Final Countdown</string>
+    <string name="song7_artist">AC/DC</string>
+    <string name="song7_duration">2:21</string>
+    <string name="song7_title">Thunderstruck</string>
+    <string name="song8_artist">Rhapsody</string>
+    <string name="song8_duration">3:07</string>
+    <string name="song8_title">Ira Tenax</string>
+    <style name="Base.Theme.Proyecto1" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Proyecto1" parent="Base.Theme.Proyecto1"/>
+</resources>
