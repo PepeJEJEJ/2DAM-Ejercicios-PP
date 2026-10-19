@@ -31,18 +31,18 @@ public class Ejercicio8 {
                                 "---------------------------------------";
             try {
                 FileWriter fw=new FileWriter("C:\\Users\\PC128\\Documents\\JIJA\\2dam\\2DAM-Ejercicios\\Acceso a Datos\\B1\\TEMA01\\Ejercicios\\Destino\\matricula.txt");
+                fw.write(contenido);
                 fw.close();
             } catch (Exception e) {
                 System.err.println("Error "+e);
             }
-            System.out.println(contenido);
             sc.close();
         } else if (opcion==2) {
             try {
                 FileReader fr=new FileReader("C:\\Users\\PC128\\Documents\\JIJA\\2dam\\2DAM-Ejercicios\\Acceso a Datos\\B1\\TEMA01\\Ejercicios\\Destino\\matricula.txt");
                 int data;
                 while ((data=fr.read())!=-1) {
-                    System.out.println((char)data);
+                    System.out.print((char)data);
                 }
                 fr.close();
             } catch (Exception e) {
