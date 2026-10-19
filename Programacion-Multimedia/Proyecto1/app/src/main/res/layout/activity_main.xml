@@ -4,16 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/spotify_black">
+    android:background="@drawable/fondo_degradado">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,37 +82,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/song1" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song1_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song1_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song1_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3:20" />
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song1_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_more" />
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -119,7 +137,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,34 +147,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/song2" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song2_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song2_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song2_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="3:24"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song2_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -163,7 +202,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -171,34 +212,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song3"/>
+                        android:src="@drawable/song1" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song3_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song3_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song3_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="3:59"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song3_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -207,7 +267,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -215,34 +277,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song4"/>
+                        android:src="@drawable/song1" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song4_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song4_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song4_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="2:45"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song4_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -251,7 +332,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -259,34 +342,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song5"/>
+                        android:src="@drawable/song1" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song5_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song5_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song5_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="2:53"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song5_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -295,7 +397,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -303,43 +407,65 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song6"/>
+                        android:src="@drawable/song6" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song6_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song6_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song6_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="3:27"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song6_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
 
             <!-- CANCIÓN 7 -->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -347,34 +473,53 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song7"/>
+                        android:src="@drawable/song7" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song7_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song7_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song7_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="2:21"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song7_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -383,7 +528,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -391,38 +538,58 @@
                     android:orientation="horizontal"
                     android:padding="8dp">
 
+                    <!-- Carátula -->
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/song8"/>
+                        android:src="@drawable/song8" />
 
+                    <!-- Título + artista -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/song8_title"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/song8_artist"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/song8_artist"
+                            android:textColor="@color/spotify_gray"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
+                    <!-- DURACIÓN -->
                     <TextView
-                        android:text="3:07"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/song8_duration"
+                        android:textColor="@color/spotify_gray"
+                        android:textSize="13sp" />
 
+                    <!-- OPCIONES -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_more"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_more" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
@@ -436,30 +603,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+        <Button
+            android:id="@+id/button2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/home"
-            android:textColor="@color/white" />
+            android:text="Inicio"
+            android:drawableTop="@drawable/ic_home"
+            android:backgroundTint="@color/azul_neon"/>
 
-        <TextView
+        <Button
+            android:id="@+id/button5"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/search"
-            android:textColor="@color/white" />
+            android:text="Buscar"
+            android:drawableTop="@drawable/ic_search"
+            android:backgroundTint="@color/azul_neon"/>
 
-        <TextView
+        <Button
+            android:id="@+id/button4"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/library"
-            android:textColor="@color/white" />
-
+            android:text="Tu biblioteca"
+            android:drawableTop="@drawable/ic_lib"
+            android:backgroundTint="@color/azul_neon"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Spotify</string>
-
-    <string name="playlist_name">Mi Playlist Favorita</string>
+    <string name="playlist_name">Mi Playlist</string>
     <string name="creator_name">Creada por José</string>
     <string name="playlist_duration">2 h 35 min</string>
-
-    <string name="song1_title">Blinding Lights</string>
-    <string name="song1_artist">The Weeknd</string>
-
-    <string name="song2_title">Believer</string>
-    <string name="song2_artist">Imagine Dragons</string>
-
-    <string name="song3_title">Heat Waves</string>
-    <string name="song3_artist">Glass Animals</string>
-
-    <string name="song4_title">Bones</string>
-    <string name="song4_artist">Imagine Dragons</string>
-
-    <string name="song5_title">Enemy</string>
-    <string name="song5_artist">Imagine Dragons</string>
-
-    <string name="song6_title">Shivers</string>
-    <string name="song6_artist">Ed Sheeran</string>
-
-    <string name="song7_title">Stay</string>
-    <string name="song7_artist">The Kid LAROI</string>
-
-    <string name="song8_title">Thunder</string>
-    <string name="song8_artist">Imagine Dragons</string>
-
-    <string name="home">Inicio</string>
-    <string name="search">Buscar</string>
-    <string name="library">Tu biblioteca</string>
-
+	<string name="song1_duration">3:20</string>
+	<string name="song2_duration">3:24</string>
+	<string name="song3_duration">3:59</string>
+	<string name="song4_duration">2:45</string>
+	<string name="song5_duration">2:53</string>
+	<string name="song6_duration">3:27</string>
+	<string name="song7_duration">2:21</string>
+	<string name="song8_duration">3:07</string>
+	<string name="song1_title">Maldito Duende</string>
+	<string name="song1_artist">Héroes del Silencio</string>
+	<string name="song2_title">Bohemian Rhapsody</string>
+	<string name="song2_artist">Queen</string>
+	<string name="song3_title">Welcome to the Jungle</string>
+	<string name="song3_artist">Guns N' Roses</string>
+	<string name="song4_title">Through the Fire and Flames</string>
+	<string name="song4_artist">DragonForce</string>
+	<string name="song5_title">La Grange</string>
+	<string name="song5_artist">ZZTop</string>
+	<string name="song6_title">The Final Countdown</string>
+	<string name="song6_artist">Europe</string>
+	<string name="song7_title">Thunderstruck</string>
+	<string name="song7_artist">AC/DC</string>
+	<string name="song8_title">Ira Tenax</string>
+	<string name="song8_artist">Rhapsody</string>
 </resources>
