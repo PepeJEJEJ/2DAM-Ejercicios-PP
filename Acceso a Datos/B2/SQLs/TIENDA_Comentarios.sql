@@ -85,6 +85,7 @@ INSERT INTO venta (id_cliente, id_producto, fecha, cantidad) VALUES
  (1, 2, '2026-09-01', 1);
 
 -- PASO 7: INSERTAR EL RESTO DE DATOS
+-- SIGZEBEN
 INSERT INTO cliente (nombre, direccion, ciudad, email) VALUES
  ('Pepe Tejada',      'Avda. de Sevilla 12',  'Sevilla',   'pepe.tejada@davante.org'),
  ('Victor Fernandez', 'C/Mayor 5',            'Jaen',      NULL),
