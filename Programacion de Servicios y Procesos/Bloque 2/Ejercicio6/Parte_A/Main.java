@@ -20,7 +20,7 @@ public class Main {
 
         long fin = System.currentTimeMillis();
 
-        System.out.println("Suma = " + suma);
         System.out.println("Tiempo = " + (fin - inicio) + " ms");
+        System.out.println("Suma = " + suma);
     }
 }

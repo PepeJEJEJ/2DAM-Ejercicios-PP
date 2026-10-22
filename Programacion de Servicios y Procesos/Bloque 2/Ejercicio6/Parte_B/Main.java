@@ -36,7 +36,7 @@ public class Main {
 
         long fin = System.currentTimeMillis();
 
-        System.out.println("Suma = " + sumaTotal);
         System.out.println("Tiempo = " + (fin - inicio) + " ms");
+        System.out.println("Suma = " + sumaTotal);
     }
 }
