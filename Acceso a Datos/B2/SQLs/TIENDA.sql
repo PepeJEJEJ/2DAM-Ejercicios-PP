@@ -132,6 +132,30 @@ SELECT * FROM producto;
 SELECT COUNT(*) AS ventas FROM venta;
 SELECT COUNT(*) AS compras FROM compra;
 
+INSERT INTO cliente (nombre, direccion, ciudad, email)
+VALUES ('Ana Ruiz', 'C/Sol 7', 'Malaga', 'ana.ruiz@davante.org');
+
+INSERT INTO cliente (nombre, direccion, ciudad, email)
+VALUES ('Luis Soto', 'C/Luna 9', 'Granada', 'luis.soto@davante.org');
+
+SELECT id_cliente, nombre, ciudad FROM cliente WHERE id_cliente > 8;
+
+-- MODIFICAR DATOS
+UPDATE cliente SET ciudad = 'Cordoba' WHERE id_cliente = 3;
+SELECT id_cliente, nombre, ciudad FROM cliente WHERE id_cliente = 3;
+
+UPDATE producto SET stock = stock + 5, precio = 529.00 WHERE id_producto = 1;
+UPDATE producto SET precio = precio * 1.10 WHERE id_producto = 4;
+SELECT id_producto, nombre, precio, stock FROM producto WHERE id_producto IN (1, 4);
+
+-- REEMPLAZAR
+REPLACE INTO producto (id_producto, nombre, categoria, marca, precio, stock)
+VALUES (9, 'Alfombrilla raton', 'Perifericos', 'Logitech', 4.90, 60);
+
+SELECT * FROM producto WHERE id_producto = 9;
+
+
+
  -- PRUEBA DE ERRORES MAS HABITUALES
 
 -- 1) Menos valores que columnas:
@@ -145,3 +169,6 @@ INSERT INTO venta (id_cliente, id_producto, fecha, cantidad) VALUES (99, 1, '202
 
 -- 4) Falta una columna obligatoria (NOT NULL):
 INSERT INTO cliente (nombre, email) VALUES ('Marta', 'marta@davante.org');
+
+-- 5) Modo Seguro
+UPDATE cliente SET ciudad = 'Cordoba' WHERE ciudad = 'Jaen';
