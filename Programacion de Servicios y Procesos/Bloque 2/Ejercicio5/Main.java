@@ -17,7 +17,8 @@ public class Main {
         j5.start();
     }
 }
-//CREA UNA CLASE LLAMADA JUGADOR QUE TOME UN NOMBRE POR PARAMETRO  Y REALICE UN BUCLE DEL 1 AL 10
-//IMPRIMIENDO EN CADA ITERACION LA FRASE "EL JUGADOR *NOMBRE* VA POR EL NUMERO I"
-//ENTRE UNA A OTRA ITERACION, SE DEBE ESPERAR UN TIEMPO ALEATORIO ENTRE 1 Y 3 SEGS.
-//EN EL MAIN, CREA 5 JUGADORES Y LANZALOS AL MISMO TIEMPO, COMPRUEBA QUIEN "GANA LA CARRERA", O SEA, QUIEN IMPPRIME 1º SU NUMERO 10
+// Crea una clase llamada Jugador que tome un nombre por parámetro y realice un bucle del 1 al 10.
+// Imprimiendo en cada iteración la frase: "El jugador *nombre* va por el número i".
+// Entre una y otra iteración, se debe esperar un tiempo aleatorio entre 1 y 3 segundos.
+// En el main, crea 5 jugadores y lánzalos al mismo tiempo.
+// Comprueba quién "gana la carrera", es decir, quién imprime primero su número 10.
