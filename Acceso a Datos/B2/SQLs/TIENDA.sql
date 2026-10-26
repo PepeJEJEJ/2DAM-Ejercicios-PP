@@ -1,9 +1,9 @@
--- CREAR LA B.D
+-- PASO 1: CREAR LA BASE DE DATOS
 DROP DATABASE IF EXISTS tienda;
 CREATE DATABASE IF NOT EXISTS tienda;
 USE tienda;
 
--- CREAR LAS TABLAS DE LA B.D
+-- PASO 2: CREAR TABLAS
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre     VARCHAR(30)  NOT NULL,
@@ -48,10 +48,11 @@ CREATE TABLE venta (
     FOREIGN KEY (id_cliente)  REFERENCES cliente (id_cliente),
     FOREIGN KEY (id_producto) REFERENCES producto (id_producto)
 );
-
+-- PASO 3: COMPROBAR TABLAS CREADAS
 SHOW TABLES;
 DESCRIBE cliente;
--- MODIFICAR LA LECTURA
+
+-- PASO 4: MODIFICAR LA ESTRUCTURA DE UNA TABLA (ALTER TABLE)
 ALTER TABLE cliente ADD COLUMN telefono VARCHAR(9);
 ALTER TABLE cliente RENAME COLUMN telefono TO movil;
 ALTER TABLE cliente MODIFY COLUMN movil VARCHAR(15);
@@ -59,13 +60,13 @@ DESCRIBE cliente;
 ALTER TABLE cliente DROP COLUMN movil;
 DESCRIBE cliente;
 
--- INDICE (Facilita las busquedas):
+-- PASO 5: CREAR Y ELIMINAR ÍNDICES
 CREATE INDEX idx_ciudad ON cliente (ciudad);
 SHOW INDEX FROM cliente;
 DROP INDEX idx_ciudad ON cliente;
 SHOW INDEX FROM cliente;
 
--- INSERTAR DATOS
+-- PASO 6: INSERTAR LOS PRIMEROS DATOS
 INSERT INTO cliente (nombre, direccion, ciudad, email)
 VALUES ('Juan Lopez', 'C/Andalucia nº 2', 'Badajoz', 'juan.lopez@davante.org');
 
@@ -83,8 +84,8 @@ INSERT INTO venta (id_cliente, id_producto, fecha, cantidad) VALUES
  (1, 1, '2026-09-01', 1),
  (1, 2, '2026-09-01', 1);
 
-
--- INSERTAR LOS DEMAS DATOS
+-- PASO 7: INSERTAR EL RESTO DE DATOS
+-- SIGZEBEN
 INSERT INTO cliente (nombre, direccion, ciudad, email) VALUES
  ('Pepe Tejada',      'Avda. de Sevilla 12',  'Sevilla',   'pepe.tejada@davante.org'),
  ('Victor Fernandez', 'C/Mayor 5',            'Jaen',      NULL),
@@ -127,48 +128,94 @@ INSERT INTO compra (id_proveedor, id_producto, fecha, cantidad, coste) VALUES
  (4, 7, '2026-08-29',  60,  58.00),
  (4, 8, '2026-08-29', 200,   5.20);
 
+-- PASO 8: CONSULTAR DATOS
 SELECT * FROM cliente;
 SELECT * FROM producto;
+
+-- PASO 9: CONSULTAS DE AGREGACIÓN (COUNT)
 SELECT COUNT(*) AS ventas FROM venta;
 SELECT COUNT(*) AS compras FROM compra;
 
+-- PASO 10: INSERTAR NUEVOS REGISTROS
 INSERT INTO cliente (nombre, direccion, ciudad, email)
 VALUES ('Ana Ruiz', 'C/Sol 7', 'Malaga', 'ana.ruiz@davante.org');
 
 INSERT INTO cliente (nombre, direccion, ciudad, email)
 VALUES ('Luis Soto', 'C/Luna 9', 'Granada', 'luis.soto@davante.org');
 
+-- PASO 11: COMPROBAR LOS REGISTROS INSERTADOS
 SELECT id_cliente, nombre, ciudad FROM cliente WHERE id_cliente > 8;
 
--- MODIFICAR DATOS
+-- PASO 12: MODIFICAR DATOS (UPDATE)
 UPDATE cliente SET ciudad = 'Cordoba' WHERE id_cliente = 3;
+
+-- PASO 13: VERIFICAR EL UPDATE
 SELECT id_cliente, nombre, ciudad FROM cliente WHERE id_cliente = 3;
 
+-- PASO 14: ACTUALIZAR VARIAS COLUMNAS
 UPDATE producto SET stock = stock + 5, precio = 529.00 WHERE id_producto = 1;
+
+-- PASO 15: ACTUALIZAR MEDIANTE OPERACIÓN ARITMÉTICA
 UPDATE producto SET precio = precio * 1.10 WHERE id_producto = 4;
+
+-- PASO 16: COMPROBAR LOS CAMBIOS REALIZADOS
 SELECT id_producto, nombre, precio, stock FROM producto WHERE id_producto IN (1, 4);
 
--- REEMPLAZAR
+-- PASO 17: REEMPLAZAR REGISTROS (REPLACE)
 REPLACE INTO producto (id_producto, nombre, categoria, marca, precio, stock)
 VALUES (9, 'Alfombrilla raton', 'Perifericos', 'Logitech', 4.90, 60);
 
+-- PASO 18: COMPROBAR EL REPLACE
 SELECT * FROM producto WHERE id_producto = 9;
 
+-- PASO 19: PRUEBAS DE ERRORES HABITUALES
 
-
- -- PRUEBA DE ERRORES MAS HABITUALES
-
--- 1) Menos valores que columnas:
+-- ERROR 1: MENOS VALORES QUE COLUMNAS
 INSERT INTO cliente VALUES ('x', 'y', 'z');
 
--- 2) Un texto donde va un número:
+-- ERROR 2: TIPO DE DATO INCORRECTO
 INSERT INTO producto (nombre, marca, precio) VALUES ('Raton', 'Logitech', 'barato');
 
--- 3) Clave foránea inexistente (el cliente 99 no existe):
+-- ERROR 3: CLAVE FORÁNEA INEXISTENTE
 INSERT INTO venta (id_cliente, id_producto, fecha, cantidad) VALUES (99, 1, '2026-10-10', 1);
 
--- 4) Falta una columna obligatoria (NOT NULL):
+-- ERROR 4: COLUMNA OBLIGATORIA NO INFORMADA
 INSERT INTO cliente (nombre, email) VALUES ('Marta', 'marta@davante.org');
 
--- 5) Modo Seguro
+-- ERROR 5: MODO SEGURO DE MYSQL
 UPDATE cliente SET ciudad = 'Cordoba' WHERE ciudad = 'Jaen';
+
+-- EJERCICIO PROPUESTO: Mostrar nombre y stock de los productos con stock inferior a 30.
+SELECT nombre, stock
+FROM producto
+WHERE stock < 30;
+-- EJERCICIO PROPUESTO: Mostrar los clientes cuya ciudad empiece por M.
+SELECT *
+FROM cliente
+WHERE ciudad LIKE 'M%';
+-- EJERCICIO PROPUESTO: Mostrar clientes sin email ordenados por nombre.
+SELECT *
+FROM cliente
+WHERE email IS NULL
+ORDER BY nombre;
+-- EJERCICIO PROPUESTO: Mostrar productos Logitech con precio inferior a 14 €.
+SELECT *
+FROM producto
+WHERE marca = 'Logitech'
+AND precio < 14;
+-- EJERCICIO PROPUESTO: Incrementar un 10% el precio de determinados productos.
+UPDATE producto
+SET precio = precio * 1.10
+WHERE marca = 'Logitech';
+-- EJERCICIO PROPUESTO: Insertar un proveedor Kingston y registrar una compra.
+INSERT INTO proveedor (nombre)
+VALUES ('Kingston');
+INSERT INTO compra (id_proveedor, id_producto, cantidad)
+VALUES (1, 3, 10);
+-- EJERCICIO PROPUESTO: Obtener el total gastado por proveedor mediante JOIN y GROUP BY.
+SELECT p.nombre,
+       SUM(c.cantidad * pr.precio) AS total_gastado
+FROM proveedor p
+JOIN compra c ON p.id_proveedor = c.id_proveedor
+JOIN producto pr ON c.id_producto = pr.id_producto
+GROUP BY p.nombre;

@@ -13,6 +13,6 @@ class ImprimirPalabra extends Thread {
         }
     }
 }
-//Crea una clase encargada de redicibr una pañlabra por parametro e imprimirla 100 veces
-//crea 3 hilos con 3 objetos de dicha clase ejecutandose al mismo tiempo (a cada una le asamos una palabra distinta)...
-//pero asegurate de que por consola se muestra siempre primero que lances, y cuando acabe, los dos siguentes si sean simultaneos
+// Crea una clase encargada de recibir una palabra por parámetro e imprimirla 100 veces.
+// Crea 3 hilos con 3 objetos de dicha clase ejecutándose al mismo tiempo (a cada uno le asignamos una palabra distinta).
+// Pero asegúrate de que, por consola, se muestre siempre primero el que lances y, cuando acabe, los dos siguientes sí sean simultáneos.
