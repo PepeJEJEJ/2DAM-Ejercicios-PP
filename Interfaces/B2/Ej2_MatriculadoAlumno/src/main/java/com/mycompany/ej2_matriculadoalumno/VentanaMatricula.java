@@ -4,10 +4,24 @@
  */
 package com.mycompany.ej2_matriculadoalumno;
 
+import javax.swing.*;
+
 /**
  *
  * @author PC128
  */
-public class VentanaMatricula {
-    buttonguardar.addActionListener(e->guardar());
+public class VentanaMatricula extends JFrame {
+
+    private JButton btnGuardar;
+
+    public VentanaMatricula() {
+
+        btnGuardar = new JButton("Guardar");
+
+        btnGuardar.addActionListener(e -> guardar());
+    }
+
+    private void guardar() {
+        // Código para guardar
+    }
 }
