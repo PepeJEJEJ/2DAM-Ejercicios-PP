@@ -2,7 +2,7 @@ package Ejercicio8;
 
 public class App {
     public static void main(String[] args) {
-        Almacen a = new Almacen();
+        Almacen a = new Almacen(33);
 
         Cliente cliente1 = new Cliente("Juan",  a);
         Cliente cliente2 = new Cliente("María", a);
