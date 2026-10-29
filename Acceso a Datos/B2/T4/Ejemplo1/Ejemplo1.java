@@ -5,7 +5,7 @@ public class Ejemplo1 {
 
     private static final String URL      = "jdbc:mysql://localhost:3306/tienda";
     private static final String USUARIO  = "root";
-    private static final String PASSWORD = "tucontraseña";
+    private static final String PASSWORD = "Med@c";
 
     public static void main(String[] args) {
 

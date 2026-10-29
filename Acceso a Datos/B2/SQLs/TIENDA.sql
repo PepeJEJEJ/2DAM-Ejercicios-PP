@@ -186,36 +186,15 @@ INSERT INTO cliente (nombre, email) VALUES ('Marta', 'marta@davante.org');
 UPDATE cliente SET ciudad = 'Cordoba' WHERE ciudad = 'Jaen';
 
 -- EJERCICIO PROPUESTO: Mostrar nombre y stock de los productos con stock inferior a 30.
-SELECT nombre, stock
-FROM producto
-WHERE stock < 30;
+
 -- EJERCICIO PROPUESTO: Mostrar los clientes cuya ciudad empiece por M.
-SELECT *
-FROM cliente
-WHERE ciudad LIKE 'M%';
+
 -- EJERCICIO PROPUESTO: Mostrar clientes sin email ordenados por nombre.
-SELECT *
-FROM cliente
-WHERE email IS NULL
-ORDER BY nombre;
+
 -- EJERCICIO PROPUESTO: Mostrar productos Logitech con precio inferior a 14 €.
-SELECT *
-FROM producto
-WHERE marca = 'Logitech'
-AND precio < 14;
+
 -- EJERCICIO PROPUESTO: Incrementar un 10% el precio de determinados productos.
-UPDATE producto
-SET precio = precio * 1.10
-WHERE marca = 'Logitech';
+
 -- EJERCICIO PROPUESTO: Insertar un proveedor Kingston y registrar una compra.
-INSERT INTO proveedor (nombre)
-VALUES ('Kingston');
-INSERT INTO compra (id_proveedor, id_producto, cantidad)
-VALUES (1, 3, 10);
+
 -- EJERCICIO PROPUESTO: Obtener el total gastado por proveedor mediante JOIN y GROUP BY.
-SELECT p.nombre,
-       SUM(c.cantidad * pr.precio) AS total_gastado
-FROM proveedor p
-JOIN compra c ON p.id_proveedor = c.id_proveedor
-JOIN producto pr ON c.id_producto = pr.id_producto
-GROUP BY p.nombre;
