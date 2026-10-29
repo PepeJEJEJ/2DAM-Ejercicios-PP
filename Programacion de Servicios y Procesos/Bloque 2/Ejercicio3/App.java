@@ -29,11 +29,11 @@ public class App {
     }
 }
 /*
- * CREAR EL JUEGO DE ADIVINAR UN NUMERO ENTRE EL 0 AL 100 (SIN MOSTRAR AL
- * USUARIO)
- * Y VA PIDIENDO NIMEROS AL USUARIO DICIENDO MAYOR O MENOR HASTA QUE ESTE
- * CONSGIA ADIVINARLO,
- * AL MISMO TIEMPO, EL PROBRANA NISTRARA UNA CUENTA DE 30 SEGUNDOS
- * (ES NORMAL QUE SIGA EL CRONOMETRO AUNQUE ADIVINEMOS EL JUEGO, Y SE QUEDA ASI
- * POR AHORA)
+ * Crear el juego de adivinar un número entre el 0 y el 100 (sin mostrarlo al
+ * usuario).
+ * Va pidiendo números al usuario, indicando si el número es mayor o menor,
+ * hasta que consiga adivinarlo.
+ * Al mismo tiempo, el programa mostrará una cuenta atrás de 30 segundos.
+ * (Es normal que siga el cronómetro aunque adivinemos el número, y se queda así
+ * por ahora).
  */
