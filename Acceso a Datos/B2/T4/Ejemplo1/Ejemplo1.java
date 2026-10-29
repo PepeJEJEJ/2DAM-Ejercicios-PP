@@ -1,10 +1,11 @@
 package Ejemplo1;
+
 import java.sql.*;
 
 public class Ejemplo1 {
 
-    private static final String URL      = "jdbc:mysql://localhost:3306/tienda";
-    private static final String USUARIO  = "root";
+    private static final String URL = "jdbc:mysql://localhost:3306/tienda";
+    private static final String USUARIO = "root";
     private static final String PASSWORD = "Med@c";
 
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Ejemplo1 {
         String sql = "SELECT id_cliente, nombre, ciudad FROM cliente";
 
         try (Connection con = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 System.out.println(rs.getInt("id_cliente") + " - "
