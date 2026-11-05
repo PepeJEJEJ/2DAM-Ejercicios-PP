@@ -20,7 +20,7 @@ public class Trabajador extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.almacen.quitarProducto();
+            this.almacen.quitarProducto("Producto");
         }
     }
 }
