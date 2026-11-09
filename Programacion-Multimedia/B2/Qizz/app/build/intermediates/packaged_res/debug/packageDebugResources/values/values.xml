@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="black">#FF000000</color>
+    <color name="colorAccent">#ffff00</color>
+    <color name="colorPrimary">#e498fc</color>
+    <color name="colorPrimaryDark">#f176fd</color>
+    <color name="correcto">#00ff00</color>
+    <color name="fondo">#ffffff</color>
+    <color name="incorrecto">#ff0000</color>
+    <color name="textoOscuro">#212121</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Qizz</string>
+    <string name="btn_jugar">Jugar</string>
+    <string name="btn_ranking">Ver ranking</string>
+    <string name="btn_ver_ranking">Ver ranking</string>
+    <string name="btn_volver_inicio">Volver al inicio</string>
+    <string name="btn_volver_ranking">Volver al inicio</string>
+    <string name="contador_pregunta">Pregunta %1$d de %2$d</string>
+    <string name="error_nombre">Escribe tu nombre para empezar</string>
+    <string name="hint_nombre">Tu nombre</string>
+    <string name="lbl_nombre">Jugador: %1$s</string>
+    <string name="lbl_puntuacion">Puntuación: %1$d / 10</string>
+    <string name="puntos">Puntos: %1$d / 10</string>
+    <string name="ranking_titulo">Ranking de partidas</string>
+    <string name="ranking_vacio">No hay partidas guardadas aún</string>
+    <string name="respuesta_correcta">¡Correcto!</string>
+    <string name="respuesta_incorrecta">Incorrecto</string>
+    <string name="resultado_titulo">Resultado</string>
+    <string name="tiempo_restante">Tiempo: %1$ds</string>
+    <style name="Base.Theme.Qizz" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Qizz" parent="Base.Theme.Qizz"/>
+</resources>

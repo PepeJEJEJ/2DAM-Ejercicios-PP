@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:padding="24dp"
+    tools:context=".ResultadoActivity">
+
+    <TextView
+        android:id="@+id/txtResultadoTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/txtNombreResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugador: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/textoOscuro"
+        app:layout_constraintTop_toBottomOf="@id/txtResultadoTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/txtPuntuacionResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 / 10"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@id/txtNombreResultado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnVerRanking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ver ranking"
+        app:layout_constraintTop_toBottomOf="@id/txtPuntuacionResultado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/btnVolverInicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Volver al inicio"
+        app:layout_constraintTop_toBottomOf="@id/btnVerRanking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
