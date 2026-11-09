@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".JuegoActivity" />
+        <activity android:name=".ResultadoActivity" />
+        <activity android:name=".RankingActivity" />
     </application>
 
 </manifest>

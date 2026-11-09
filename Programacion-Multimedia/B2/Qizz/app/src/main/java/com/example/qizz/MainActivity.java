@@ -1,6 +1,9 @@
 package com.example.qizz;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,24 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        EditText edtNombre = findViewById(R.id.edtNombre);
+        Button btnJugar = findViewById(R.id.btnJugar);
+        Button btnRanking = findViewById(R.id.btnRanking);
+
+        btnJugar.setOnClickListener(v -> {
+            String nombre = edtNombre.getText().toString().trim();
+            if (nombre.isEmpty()) {
+                edtNombre.setError(getString(R.string.error_nombre));
+                edtNombre.requestFocus();
+                return;
+            }
+            Intent i = new Intent(this, JuegoActivity.class);
+            i.putExtra("NOMBRE", nombre);
+            startActivity(i);
+        });
+
+        btnRanking.setOnClickListener(v ->
+                startActivity(new Intent(this, RankingActivity.class)));
     }
 }
