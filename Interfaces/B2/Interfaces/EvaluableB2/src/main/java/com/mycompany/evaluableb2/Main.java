@@ -7,8 +7,8 @@ package com.mycompany.evaluableb2;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.evaluableb2.vista.VentanaPrincipal;
 import javax.swing.SwingUtilities;
-
-public class EvaluableB2 {
+//EL MAIN
+public class Main {
 
     public static void main(String[] args) {
 
