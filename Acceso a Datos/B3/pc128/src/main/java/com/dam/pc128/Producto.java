@@ -22,7 +22,8 @@ public class Producto {
 
     private int stock;
 
-    public Producto() {}
+    public Producto() {
+    }
 
     public Producto(String nombre, double precio, int stock) {
         this.nombre = nombre;
