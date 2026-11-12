@@ -1,13 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Recursos recursos = new Recursos(3);
         Thread barbero = new Thread(new Barbero(recursos), "Barbero");
         barbero.start();
 
-        Thread[] clientes = new Thread[8];
+        List<Thread> clientes = new ArrayList<>();
         for (int i = 1; i <= 8; i++) {
-            clientes[i - 1] = new Thread(new Cliente(recursos, i), "Cliente-" + i);
-            clientes[i - 1].start();
+            Thread cliente = new Thread(new Clientes(recursos, i), "Cliente-" + i);
+            clientes.add(cliente);
+            cliente.start();
         }
 
         for (Thread cliente : clientes) {
@@ -16,8 +20,6 @@ public class Main {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println("La ejecución principal ha sido interrumpida.");
-                recursos.cerrar();
-                return;
             }
         }
 

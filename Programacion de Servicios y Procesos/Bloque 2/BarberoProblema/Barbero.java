@@ -11,13 +11,17 @@ public class Barbero implements Runnable {
     @Override
     public void run() {
         try {
-            Cliente cliente;
-            while ((cliente = recursos.cogerCliente()) != null) {
-                int tiempoCorte = random.nextInt(1500) + 800;
-                System.out.println("El barbero corta el pelo al cliente " + cliente.getNumero() + ".");
-                Thread.sleep(tiempoCorte);
+            while (true) {
+                Clientes cliente = recursos.esperarCliente();
+                if (cliente == null) {
+                    return;
+                }
 
-                recursos.soltarSilla(cliente);
+                int tiempoCorte = random.nextInt(1500) + 800;
+                System.out.println("El barbero empieza el corte del Cliente " + cliente.getId()
+                        + " (" + tiempoCorte + " ms).");
+                Thread.sleep(tiempoCorte);
+                recursos.terminarCorte();
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

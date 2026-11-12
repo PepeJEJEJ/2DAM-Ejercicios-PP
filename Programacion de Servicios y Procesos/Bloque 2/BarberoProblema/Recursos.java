@@ -1,34 +1,33 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Recursos {
-    private final int numeroSillas;
-    private final Deque<Cliente> salaEspera;
-    private final Set<Cliente> clientesAtendidos;
-    private boolean abierta;
+    private final int sillasEspera;
+    private final Deque<Clientes> salaEspera = new ArrayDeque<>();
+    private boolean abierto = true;
+    private Clientes clienteActual;
 
-    public Recursos(int numeroSillas) {
-        this.numeroSillas = numeroSillas;
-        this.salaEspera = new ArrayDeque<>();
-        this.clientesAtendidos = new HashSet<>();
-        this.abierta = true;
+    public Recursos(int sillasEspera) {
+        if (sillasEspera < 0) {
+            throw new IllegalArgumentException("El número de sillas no puede ser negativo.");
+        }
+        this.sillasEspera = sillasEspera;
     }
 
-    public synchronized boolean ocuparSilla(Cliente cliente) {
-        if (!abierta || salaEspera.size() >= numeroSillas) {
+    public synchronized boolean entrar(Clientes cliente) {
+        if (salaEspera.size() >= sillasEspera) {
             return false;
         }
 
         salaEspera.addLast(cliente);
-        System.out.println("Cliente " + cliente.getNumero() + " ocupa una silla de espera.");
+        System.out.println("Cliente " + cliente.getId() + " se sienta en la sala de espera ("
+                + salaEspera.size() + "/" + sillasEspera + ").");
         notifyAll();
         return true;
     }
 
-    public synchronized Cliente cogerCliente() throws InterruptedException {
-        while (salaEspera.isEmpty() && abierta) {
+    public synchronized Clientes esperarCliente() throws InterruptedException {
+        while (salaEspera.isEmpty() && abierto) {
             System.out.println("El barbero duerme: no hay clientes.");
             wait();
         }
@@ -37,27 +36,21 @@ public class Recursos {
             return null;
         }
 
-        Cliente cliente = salaEspera.removeFirst();
-        System.out.println("El barbero atiende al cliente " + cliente.getNumero() + ".");
-        notifyAll();
-        return cliente;
+        clienteActual = salaEspera.removeFirst();
+        System.out.println("El barbero atiende al Cliente " + clienteActual.getId() + ".");
+        return clienteActual;
     }
 
-    public synchronized void esperarAtencion(Cliente cliente) throws InterruptedException {
-        while (!clientesAtendidos.contains(cliente) && abierta) {
-            wait();
+    public synchronized void terminarCorte() {
+        if (clienteActual != null) {
+            System.out.println("El barbero termina con el Cliente " + clienteActual.getId() + ".");
+            clienteActual.terminarAtencion();
+            clienteActual = null;
         }
-        clientesAtendidos.remove(cliente);
-    }
-
-    public synchronized void soltarSilla(Cliente cliente) {
-        clientesAtendidos.add(cliente);
-        System.out.println("El cliente " + cliente.getNumero() + " termina el corte y deja la silla.");
-        notifyAll();
     }
 
     public synchronized void cerrar() {
-        abierta = false;
+        abierto = false;
         notifyAll();
     }
 }
