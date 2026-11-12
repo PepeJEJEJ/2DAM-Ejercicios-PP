@@ -1,13 +1,6 @@
 import java.util.Arrays;
-import java.util.concurrent.Semaphore;
 
 public class Mesa {
-    private final Semaphore[] semaforos = {
-        new Semaphore(0),
-        new Semaphore(0),
-        new Semaphore(0)
-    };
-
     private final Object lock = new Object();
     private Ingrediente[] ingredientesEnMesa;
 
@@ -16,19 +9,13 @@ public class Mesa {
             while (ingredientesEnMesa != null) {
                 lock.wait();
             }
-            ingredientesEnMesa = ingredientes;
-        }
 
-        for (Ingrediente ingrediente : Ingrediente.values()) {
-            if (!contiene(ingredientes, ingrediente)) {
-                semaforos[ingrediente.ordinal()].release();
-            }
+            ingredientesEnMesa = ingredientes;
+            lock.notifyAll();
         }
     }
 
     public Ingrediente[] tomarIngredientes(Ingrediente ingrediente) throws InterruptedException {
-        semaforos[ingrediente.ordinal()].acquire();
-
         synchronized (lock) {
             while (ingredientesEnMesa == null || contiene(ingredientesEnMesa, ingrediente)) {
                 lock.wait();
