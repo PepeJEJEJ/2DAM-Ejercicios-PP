@@ -1,5 +1,6 @@
 CREATE USER 'tocabd'@'%' IDENTIFIED BY '12345';
 GRANT ALL PRIVILEGES ON hibernate_db.* TO 'tocabd'@'%';
+GRANT ALL PRIVILEGES ON empresa_db.* TO 'tocabd'@'%';
 FLUSH PRIVILEGES;
 
 SELECT User, Host
