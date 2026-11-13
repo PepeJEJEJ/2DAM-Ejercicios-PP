@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.davante.pmdp.ejercicio8_sqlite"
+    namespace = "com.davante.pmdp.ejercicio14_clientephp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.davante.pmdp.ejercicio8_sqlite"
+        applicationId = "com.davante.pmdp.ejercicio14_clientephp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -29,10 +29,10 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
+    implementation("com.android.volley:volley:1.2.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
