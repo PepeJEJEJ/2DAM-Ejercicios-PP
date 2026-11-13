@@ -1,129 +1,243 @@
-# Memoria: ranking global con Docker, PHP y Android
+# MEMORIA DE LA PRÁCTICA: RANKING GLOBAL CON DOCKER, PHP Y ANDROID
 
-## Apartado 1: Docker
+---
 
-### Explicación
+## APARTADO 1: DOCKER
 
-Un contenedor es una instancia aislada que empaqueta una aplicación y lo necesario para ejecutarla. Comparte el kernel del sistema anfitrión, por lo que suele ser más ligero que una máquina virtual. En este ejercicio, Docker Compose configura dos servicios conectados por una red interna:
+### 1.1. Explicación Teórica y Arquitectura
 
-| Servicio | Contenedor / imagen | Función |
-|---|---|---|
-| `db` | MariaDB 11 | Guarda los usuarios y sus puntuaciones en la base de datos `bd_android`. |
-| `web` | PHP 8.2 con Apache | Sirve la página web y ejecuta los scripts PHP que consultan o modifican la base de datos. |
+#### ¿Qué es un contenedor?
+Un **contenedor** es una unidad de software ligera, autónoma y ejecutable que empaqueta el código de una aplicación junto con todas sus dependencias, bibliotecas y archivos de configuración necesarios para que se ejecute de forma rápida y fiable en cualquier entorno de computación. 
 
-El servicio web publica el puerto `80` del contenedor como el puerto `8080` del ordenador. La base de datos no publica un puerto al anfitrión: PHP se conecta a ella por la red de Compose usando el nombre de servicio `db`. El volumen `db_data` conserva los datos aunque se detengan o eliminen los contenedores.
+A diferencia de una **máquina virtual (VM)**, que virtualiza el hardware completo e incluye un sistema operativo huésped (*Guest OS*) entero, los contenedores comparten el mismo núcleo (*kernel*) del sistema operativo anfitrión (*Host OS*). Esto permite que los contenedores se inicien en cuestión de segundos, consuman significativamente menos memoria RAM y espacio en disco, y ofrezcan una eficiencia mucho mayor.
 
-El archivo `db/init.sql` crea la tabla `usuarios` e inserta inicialmente a Pilar (8 puntos) y José (6 puntos). El script de inicialización se ejecuta al crear por primera vez el volumen; para volver a inicializar la base de datos hay que borrar también ese volumen.
+#### Contenedores del proyecto (`docker-compose.yml`)
+En este proyecto se utiliza **Docker Compose** para orquestar y comunicar dos contenedores en una red interna privada:
 
-### Comandos para arrancar y parar
+1. **Contenedor de Base de Datos (`db`):**
+   - **Imagen:** `mariadb:11`
+   - **Función:** Almacena de forma persistente los datos de los usuarios y sus puntuaciones en la base de datos `bd_android`.
+   - **Configuración:** Cuenta con un volumen nombrado (`db_data`) montado en `/var/lib/mysql` para garantizar la persistencia de los datos tras detener o reiniciar el contenedor. Además, monta el script `init.sql` para inicializar automáticamente la tabla `usuarios` y los datos por defecto (Pilar con 8 puntos, José con 6 puntos) la primera vez que se genera la base de datos.
 
-Ejecutar los comandos desde la carpeta `ServidorDocker`:
+2. **Contenedor Web y Servidor Backend (`web`):**
+   - **Imagen:** Basada en `php:8.2-apache` (compilada localmente mediante el `Dockerfile` de `./php`).
+   - **Función:** Servidor HTTP Apache que procesa la aplicación web frontend (`index.html`) y ejecuta los scripts en PHP (`conexion.php`, `listar.php`, `insertar.php`, `buscar.php`).
+   - **Red y Puertos:** Expone el puerto `80` del contenedor hacia el puerto `8080` de la máquina anfitriona (`8080:80`). Esto permite acceder al servicio desde el navegador web del equipo anfitrión a través de `http://localhost:8080`. Se comunica con el contenedor `db` a través de la red interna de Docker resolviendo el nombre de host `db`.
 
-```powershell
-# Construir la imagen PHP si hace falta y arrancar los dos servicios en segundo plano
-docker compose up -d --build
+---
 
-# Comprobar el estado de los contenedores y los puertos
-docker compose ps
+### 1.2. Comandos para arrancar y parar el entorno
 
-# Ver los registros de los servicios
-docker compose logs
+Todos los comandos se ejecutan desde la terminal situándose en la carpeta donde se encuentra el archivo `docker-compose.yml` (`ServidorDocker`):
 
-# Detener los servicios sin borrar los contenedores ni los datos
-docker compose stop
+* **Arrancar los contenedores en segundo plano (detached mode):**
+  ```bash
+  docker compose up -d
+  ```
+  *(Añada `--build` si ha modificado el Dockerfile o la configuración de las imágenes: `docker compose up -d --build`)*
 
-# Detener y eliminar los contenedores y la red; conserva el volumen de la base de datos
-docker compose down
+* **Comprobar el estado de los contenedores en marcha:**
+  ```bash
+  docker compose ps
+  ```
 
-# Eliminar también el volumen; se perderán los datos y se volverá a ejecutar init.sql
-docker compose down -v
+* **Visualizar los registros/logs de los servicios:**
+  ```bash
+  docker compose logs -f
+  ```
+
+* **Detener temporalmente los contenedores (sin borrarlos ni perder el estado):**
+  ```bash
+  docker compose stop
+  ```
+
+* **Arrancar de nuevo los contenedores detenidos:**
+  ```bash
+  docker compose start
+  ```
+
+* **Detener y eliminar los contenedores y las redes creadas:**
+  ```bash
+  docker compose down
+  ```
+
+* **Detener y borrar contenedores, redes Y volúmenes (reinicia la BD a su estado inicial `init.sql`):**
+  ```bash
+  docker compose down -v
+  ```
+
+---
+
+### 1.3. Capturas del Apartado 1
+
+> **CAPTURA 1.1: Docker Desktop y Terminal con los contenedores activos**
+> 
+> *Instrucción para el alumno:* Adjuntar aquí una captura de pantalla donde se observe:
+> 1. La interfaz de **Docker Desktop** mostrando la pila de contenedores (`ServidorDocker`) con los servicios `db` y `web` en estado **Running** (color verde).
+> 2. La **terminal de comandos** ejecutando `docker compose ps` y mostrando ambos contenedores activos y el mapeo del puerto `0.0.0.0:8080->80/tcp`.
+
+```
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|                   [ INSERTAR AQUÍ CAPTURA 1.1: DOCKER DESKTOP ]                   |
+|           Contenedores `db` y `web` en marcha + Terminal con `docker compose ps`  |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
 ```
 
-Para acceder a la web desde el ordenador, abrir `http://localhost:8080`.
+---
 
-### Capturas que hay que adjuntar
+## APARTADO 2: PHP
 
-1. **Docker Desktop y terminal:** mostrar los contenedores de `db` y `web` en estado activo en Docker Desktop y, en la terminal, la ejecución de `docker compose ps` con ambos servicios en marcha.
+### 2.1. Explicación de los Scripts Backend
 
-> **Insertar aquí la captura 1:** Docker Desktop con `db` y `web` activos, junto a la terminal con `docker compose ps`.
+El backend PHP está alojado en el contenedor web (`/var/www/html`) y se encarga de la lógica de negocio y comunicación con MariaDB.
 
-## Apartado 2: PHP
+#### 1. `conexion.php`
+- **Función:** Define la configuración global del servidor y establece la conexión con la base de datos MariaDB.
+- **Detalles clave:**
+  - Establece la cabecera `Content-Type: application/json; charset=utf-8` para asegurar que todas las respuestas se envíen en formato JSON codificado en UTF-8.
+  - Utiliza `set_exception_handler` para capturar cualquier fallo de conexión o error de ejecución de MySQL y devolver automáticamente un código de respuesta **HTTP 500 (Internal Server Error)** con una estructura JSON de error (`{"resultado":"ERROR", "mensaje":"..."}`). Esto evita que PHP responda errores en HTML.
+  - Conecta a MariaDB mediante `mysqli_connect("db", "alumno", "alumno", "bd_android")`, haciendo uso del nombre de host `"db"` que resuelve la DNS interna de Docker Compose.
 
-### Explicación
+#### 2. `index.html`
+- **Función:** Interfaz web para el usuario en el navegador (`http://localhost:8080`).
+- **Detalles clave:**
+  - Muestra un formulario para registrar nuevos usuarios con su nombre y puntuación.
+  - Renderiza una tabla HTML interactiva con el listado del ranking de jugadores.
+  - Mediante JavaScript (`fetch`), realiza peticiones asíncronas a `listar.php` al cargar la página y a `insertar.php` al enviar el formulario.
 
-La carpeta `ServidorDocker/php/html` contiene la página y los endpoints PHP:
+#### 3. `listar.php`
+- **Función:** Devuelve el ranking global completo de jugadores.
+- **Detalles clave:**
+  - Ejecuta la consulta SQL: `SELECT id, nombre, puntuacion FROM usuarios ORDER BY puntuacion DESC, nombre`.
+  - Ordena a los jugadores descendentemente por su puntuación (los marcadores más altos primero) y alfabéticamente en caso de empate.
+  - Formatea los campos numéricos como enteros numéricos de JSON (no strings) y devuelve una lista/array de objetos JSON (`[{"id":1, "nombre":"Pilar", "puntuacion":8}, ...]`).
 
-- **`index.html`** muestra el formulario para añadir un usuario y la tabla del ranking. Al cargar la página y al pulsar **Actualizar**, hace una petición a `listar.php`. Al enviar el formulario, manda nombre y puntuación a `insertar.php` mediante POST y vuelve a actualizar la lista.
-- **`conexion.php`** configura las respuestas JSON, conecta con MariaDB y define el manejo de errores de servidor. Desde el contenedor web, el host de la base de datos es `db`, que es el nombre del servicio de Compose.
-- **`listar.php`** consulta los usuarios y devuelve un array JSON ordenado por puntuación descendente y, en caso de empate, por nombre.
-- **`insertar.php`** valida nombre y puntuación y añade el usuario con una consulta preparada. Devuelve JSON con el resultado y el ID creado.
-- **`buscar.php`** recibe un nombre por GET y devuelve sus datos en JSON. Si no encuentra a la persona, responde con el código HTTP 404.
+#### 4. `insertar.php`
+- **Función:** Recibe datos de un nuevo registro y los almacena en la base de datos.
+- **Detalles clave:**
+  - Recibe los parámetros `nombre` y `puntuacion` a través de una petición HTTP **POST**.
+  - Valida que el nombre no esté vacío y que la puntuación sea un valor numérico. En caso de invalidez, responde con un código **HTTP 400 (Bad Request)**.
+  - Emplea **consultas preparadas** (`mysqli_prepare` y `mysqli_stmt_bind_param`) para prevenir ataques de **Inyección SQL**.
+  - Devuelve una confirmación JSON: `{"resultado":"OK", "id": X}` con código **HTTP 200**.
 
-La tabla inicial contiene a Pilar con 8 puntos y a José con 6. Los datos añadidos después se guardan en el volumen de MariaDB.
+#### 5. `buscar.php`
+- **Función:** Busca la puntuación de un usuario específico por su nombre.
+- **Detalles clave:**
+  - Recibe el parámetro `nombre` mediante una petición HTTP **GET** (`buscar.php?nombre=Pilar`).
+  - Realiza una consulta preparada filtrando por nombre (`WHERE nombre = ? LIMIT 1`).
+  - Si el usuario existe, devuelve un objeto JSON con sus datos. Si el usuario no se encuentra en la base de datos, devuelve un código **HTTP 404 (Not Found)** con `{"resultado":"NO_ENCONTRADO"}`.
 
-### Capturas que hay que adjuntar
+---
 
-2. **Web inicial:** navegador en `http://localhost:8080`, mostrando el listado y las puntuaciones.
-3. **Web tras insertar desde Android:** la misma página actualizada, con el usuario y la puntuación que se enviaron desde la aplicación.
+### 2.2. Capturas del Apartado 2
 
-> **Insertar aquí la captura 2:** página web en `localhost:8080` con el ranking visible.
->
-> **Insertar aquí la captura 3:** página web con el registro añadido desde Android visible en el listado.
+> **CAPTURA 2.1: Aplicación web en navegador (`localhost:8080`)**
+> 
+> *Instrucción para el alumno:* Adjuntar una captura de pantalla del navegador accediendo a `http://localhost:8080` donde se observe la tabla del ranking con las puntuaciones iniciales cargadas.
 
-## Apartado 3: Android
-
-### Explicación
-
-La aplicación Android actúa como cliente del servidor PHP y utiliza la librería **Volley** para realizar peticiones HTTP. Volley gestiona una cola reutilizable de peticiones y ejecuta las operaciones de red de forma asíncrona, por lo que la interfaz no queda bloqueada mientras espera la respuesta.
-
-En `MainActivity`, las peticiones funcionan así:
-
-- `listar.php` se consulta mediante GET. La respuesta JSON se convierte en filas del ranking y se muestra en un `ListView`.
-- `insertar.php` recibe el nombre y la puntuación mediante POST. Si se envía correctamente, la aplicación informa al usuario y vuelve a consultar el ranking.
-- `buscar.php` se consulta mediante GET con el nombre codificado para URL. Si el servidor devuelve 404, la aplicación indica que el nombre no está en el ranking.
-- Si falla una consulta por falta de conexión o por un error del servidor, se muestra un mensaje en pantalla; los detalles técnicos se registran con la etiqueta `VOLLEY` en Logcat.
-
-### Permisos del Manifest
-
-En el manifiesto se declara:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
+```
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|                   [ INSERTAR AQUÍ CAPTURA 2.1: WEB EN LOCALHOST ]                 |
+|             Navegador en `http://localhost:8080` con el ranking inicial           |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
 ```
 
-Este permiso permite que la aplicación acceda a la red. No se solicita en tiempo de ejecución porque no es un permiso de tipo peligroso. Además, el manifiesto incluye:
+---
 
-```xml
-<application
-    android:usesCleartextTraffic="true"
-    ... >
+## APARTADO 3: ANDROID
+
+### 3.1. Explicación Técnica de la App Android
+
+#### ¿Qué hace la librería Volley?
+**Volley** es una biblioteca de red desarrollada por Google para aplicaciones Android que simplifica y optimiza el proceso de realización de peticiones HTTP/HTTPS a servidores web.
+
+Sus características y funciones principales en la app son:
+1. **Gestión Asíncrona en Segundo Plano:** Volley ejecuta las peticiones de red en hilos secundarios (*background threads*) y entrega las respuestas de vuelta en el hilo principal de la interfaz de usuario (*UI Thread*). Esto evita que la aplicación se bloquee o muestre el mensaje de error *ANR (Application Not Responding)*.
+2. **Cola de Peticiones (`RequestQueue`):** Administra una cola interna (`Volley.newRequestQueue(this)`) que gestiona el envío, concurrencia y cancelación de solicitudes HTTP.
+3. **Tipos de Peticiones Especializadas:** 
+   - `JsonArrayRequest`: Se usa en `listar()` para recibir un array de objetos JSON directamente.
+   - `JsonObjectRequest`: Se usa en `buscarPorNombre()` para recibir un único objeto JSON.
+   - `StringRequest`: Se usa en `insertar()` sobreescribiendo el método `getParams()` para enviar los datos mediante un formulario HTTP POST (`application/x-www-form-urlencoded`).
+
+---
+
+#### Permisos obligatorios en el `AndroidManifest.xml`
+
+Para permitir la comunicación de red, el archivo `AndroidManifest.xml` incluye las siguientes configuraciones:
+
+1. **Permiso de Internet:**
+   ```xml
+   <uses-permission android:name="android.permission.INTERNET" />
+   ```
+   *Explicación:* Permite que la aplicación abra sockets de red para comunicarse con servidores externos o locales. Es un permiso de categoría normal, por lo que se concede automáticamente al instalar la app sin requerir confirmación en tiempo de ejecución.
+
+2. **Permiso de Tráfico en Texto Plano (`usesCleartextTraffic`):**
+   ```xml
+   <application
+       android:usesCleartextTraffic="true"
+       ... >
+   ```
+   *Explicación:* A partir de Android 9.0 (API nivel 28), el sistema bloquea por defecto todas las conexiones HTTP no cifradas en favor de HTTPS por motivos de seguridad. Dado que el servidor de desarrollo local Docker opera sobre HTTP estándar (`http://`), es imprescindible activar `android:usesCleartextTraffic="true"` para evitar excepciones de red de tipo `UnknownServiceException: CLEARTEXT communication to 10.0.2.2 not permitted`.
+
+---
+
+#### Acceso a `localhost:8080` frente a `10.0.2.2`
+
+- **En el equipo anfitrión (PC):**
+  - La dirección `localhost` (o `127.0.0.1`) hace referencia al propio equipo donde se ejecuta el navegador web. Docker publica el puerto `80` del contenedor web en el puerto `8080` del equipo anfitrión. Por tanto, el navegador accede mediante `http://localhost:8080/`.
+
+- **En el Emulador de Android:**
+  - El emulador funciona dentro de una máquina virtual con su propia pila de red virtualizada. Dentro del emulador, `localhost` o `127.0.0.1` apunta **al propio dispositivo móvil virtualizado**, no al PC donde corre Docker.
+  - Para permitir que el emulador acceda a los servicios alojados en el `localhost` de la máquina anfitriona (el PC), el entorno de desarrollo de Android asigna la dirección IP especial **`10.0.2.2`**.
+  - Por esta razón, en el código Java de la app Android la URL base se define como:
+    ```java
+    private static final String BASE = "http://10.0.2.2:8080/";
+    ```
+  - *(Nota: Si la prueba se realiza desde un dispositivo móvil físico conectado por Wi-Fi, debe usarse la dirección IP privada del ordenador en la red local, como por ejemplo `http://192.168.1.X:8080/`)*.
+
+---
+
+### 3.2. Capturas del Apartado 3
+
+> **CAPTURA 3.1: Aplicación Android con el ranking cargado y la nueva puntuación**
+> 
+> *Instrucción para el alumno:* Adjuntar una captura del emulador Android ejecutando la aplicación, tras enviar una nueva puntuación desde el formulario (por ejemplo: un usuario nuevo con sus puntos) y comprobando que aparece listado en el `ListView`.
+
+```
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|               [ INSERTAR AQUÍ CAPTURA 3.1: APP ANDROID CON RANKING ]              |
+|        Pantalla de la app con la lista del ranking y el registro insertado        |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
 ```
 
-Esto permite las conexiones HTTP sin cifrar que utiliza el servidor local de la práctica. Para una aplicación publicada se debería usar HTTPS y retirar esta excepción.
+> **CAPTURA 3.2: Confirmación en la web del dato insertado desde Android**
+> 
+> *Instrucción para el alumno:* Adjuntar una captura del navegador web en `http://localhost:8080` refrescado, donde se certifique que el dato insertado desde el móvil Android se ha guardado correctamente en MariaDB y se muestra en la web.
 
-### `localhost:8080` frente a `10.0.2.2`
+```
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|             [ INSERTAR AQUÍ CAPTURA 3.2: WEB CON DATO DESDE ANDROID ]             |
+|          Navegador en `http://localhost:8080` mostrando el nuevo usuario          |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
+```
 
-En un navegador del ordenador, `localhost` apunta al propio ordenador. Por eso la página se abre en `http://localhost:8080`: Docker publica el puerto 80 del contenedor web en el puerto 8080 del anfitrión.
+> **CAPTURA 3.3: Comprobación del error en Android con el servidor detenido**
+> 
+> *Instrucción para el alumno:* Detener los contenedores Docker mediante `docker compose stop`. A continuación, pulsar el botón "Actualizar" o intentar buscar en la app Android y adjuntar la captura donde se visualice el mensaje Toast de error de conexión (`"No se puede conectar con el servidor"`).
 
-Dentro del emulador Android, `localhost` apuntaría al propio emulador, no al ordenador donde corre Docker. El emulador Android estándar reserva `10.0.2.2` como dirección para acceder al `localhost` del ordenador anfitrión. Por ese motivo, la aplicación usa `http://10.0.2.2:8080/`. En un dispositivo físico habría que sustituirla por la IP local del ordenador, manteniendo ambos dispositivos en la misma red.
-
-### Capturas que hay que adjuntar
-
-4. **Aplicación con ranking:** pantalla de la app con el ranking y la puntuación del usuario que se acaba de insertar.
-5. **Confirmación en la web:** la captura 3 del apartado anterior debe mostrar ese mismo usuario y puntuación en `localhost:8080`.
-6. **Servidor apagado:** detener los contenedores, pulsar **Actualizar** en la aplicación y mostrar el mensaje de error de conexión.
-
-> **Insertar aquí la captura 4:** aplicación Android con el ranking y la puntuación enviados.
->
-> **La captura 3 sirve también como evidencia de que ese registro llegó a la base de datos y se muestra en la web.**
->
-> **Insertar aquí la captura 5:** aplicación Android con el servidor detenido y el mensaje de error tras consultar.
-
-## Rutas del proyecto
-
-- Servidor Docker: `app/src/main/java/com/RankingGlobal/RankingGlobal/ServidorDocker/`
-- Cliente Android: `app/src/main/java/com/RankingGlobal/RankingGlobal/APPClienteAndroid/`
-
-## Estado de las evidencias
-
-El contenido de esta memoria se ha redactado a partir de los archivos del proyecto. Las capturas de ejecución quedan pendientes: en el entorno de preparación no están disponibles los comandos `docker`, `php` ni `adb`, por lo que no se ha podido arrancar el servidor ni el emulador y no se han generado imágenes de una ejecución real.
+```
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|             [ INSERTAR AQUÍ CAPTURA 3.3: ERROR CON SERVIDOR APAGADO ]             |
+|     Pantalla de la app Android mostrando el Toast de error al detener Docker      |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
+```
