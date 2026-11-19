@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.example.qizz.app-debug-31:/layout_activity_resultado.xml.flat",
+        "source": "com.example.qizz.app-main-33:/layout/activity_resultado.xml"
+    },
+    {
+        "merged": "com.example.qizz.app-debug-31:/layout_activity_juego.xml.flat",
+        "source": "com.example.qizz.app-main-33:/layout/activity_juego.xml"
+    },
+    {
+        "merged": "com.example.qizz.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "com.example.qizz.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.qizz.app-debug-31:/layout_item_ranking.xml.flat",
+        "source": "com.example.qizz.app-main-33:/layout/item_ranking.xml"
+    },
+    {
+        "merged": "com.example.qizz.app-debug-31:/layout_activity_ranking.xml.flat",
+        "source": "com.example.qizz.app-main-33:/layout/activity_ranking.xml"
+    },
+    {
+        "merged": "com.example.qizz.app-debug-31:/raw_fin_partida.wav.flat",
+        "source": "com.example.qizz.app-main-33:/raw/fin_partida.wav"
+    }
+]

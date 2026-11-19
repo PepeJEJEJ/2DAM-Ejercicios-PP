@@ -1,0 +1,12 @@
+2026-10-11 19:17;Calculadora
+2026-10-11 19:20;Bloc de notas
+2026-10-11 19:24;Paint
+2026-10-12 10:19;Bloc de notas
+2026-10-12 10:19;Chrome
+2026-10-12 10:56;Paint
+2026-10-12 11:39;VSCode
+2026-10-12 11:39;Bloc de notas
+2026-10-12 11:39;Calculadora
+2026-10-12 11:39;Chrome
+2026-10-12 11:39;Paint
+2026-10-13 17:46;VSCode

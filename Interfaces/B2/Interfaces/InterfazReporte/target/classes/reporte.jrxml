@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jasperReport name="reporte" pageWidth="595" pageHeight="842" columnWidth="555"
+    leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+    uuid="d85f5f75-792d-4c48-8656-537ba82081c2">
+
+    <parameter name="nombreUsuario" class="java.lang.String"/>
+    <parameter name="direccionUsuario" class="java.lang.String"/>
+    <parameter name="telefonoUsuario" class="java.lang.String"/>
+    <parameter name="fechaActual" class="java.lang.String"/>
+
+    <title height="60">
+        <element kind="staticText" uuid="1b9ed31a-b14b-4d38-b1dc-5a3b54ec6a09"
+            x="0" y="10" width="300" height="30" fontSize="18.0" bold="true">
+            <text><![CDATA[INFORME DE USUARIO]]></text>
+        </element>
+    </title>
+
+    <detail>
+        <band height="120">
+
+            <element kind="staticText" uuid="85c534e4-b714-4f34-8d37-5418c1f3f920"
+                x="20" y="10" width="100" height="20">
+                <text><![CDATA[Nombre:]]></text>
+            </element>
+            <element kind="textField" uuid="f19a81a0-f914-4dbc-abef-c7a168445c3b"
+                x="130" y="10" width="250" height="20">
+                <expression><![CDATA[$P{nombreUsuario}]]></expression>
+            </element>
+            <element kind="staticText" uuid="3d439e6f-f0d8-4e1f-95bb-0a40a98effe6"
+                x="20" y="40" width="100" height="20">
+                <text><![CDATA[Dirección:]]></text>
+            </element>
+            <element kind="textField" uuid="ef20c01a-f74d-46a1-b31f-8fd1b15527f0"
+                x="130" y="40" width="250" height="20">
+                <expression><![CDATA[$P{direccionUsuario}]]></expression>
+            </element>
+            <element kind="staticText" uuid="a55028d3-b959-4c65-a5a2-f58f21bf1968"
+                x="20" y="70" width="100" height="20">
+                <text><![CDATA[Teléfono:]]></text>
+            </element>
+            <element kind="textField" uuid="f84cc869-43b7-4eaf-880c-5f48375a4bed"
+                x="130" y="70" width="250" height="20">
+                <expression><![CDATA[$P{telefonoUsuario}]]></expression>
+            </element>
+        </band>
+    </detail>
+
+    <pageFooter height="30">
+        <element kind="textField" uuid="513f40e7-5e44-4cb0-8303-ae84e2911fcb"
+            x="20" y="5" width="400" height="20">
+            <expression><![CDATA["Informe generado el: " + $P{fechaActual}]]></expression>
+        </element>
+    </pageFooter>
+
+</jasperReport>

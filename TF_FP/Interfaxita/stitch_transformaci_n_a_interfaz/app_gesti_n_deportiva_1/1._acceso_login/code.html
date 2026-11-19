@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Acceso / Login - Club Deportivo Oficial</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f172a',
+              dark: '#111827',
+              blue: '#2563eb',
+              lightBlue: '#eff6ff',
+              surface: '#f8fafc',
+              border: '#e2e8f0',
+              muted: '#64748b'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    /* Native iOS smooth tap and base constraints */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .mobile-frame {
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background-color: #f8fafc;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  </style>
+</head>
+<body class="h-full text-slate-800 antialiased selection:bg-blue-100">
+<!-- BEGIN: MobileFrameContainer -->
+<div class="mobile-frame relative flex flex-col justify-between overflow-hidden">
+<!-- BEGIN: TopAppHeaderSection -->
+<header class="w-full pt-3 px-6 pb-2 select-none" data-purpose="app-header">
+<!-- iOS Status Bar -->
+<div class="flex justify-between items-center text-slate-800 pt-1 pb-3 text-sm font-semibold tracking-tight" data-purpose="ios-status-bar">
+<span>09:41</span>
+<div class="flex items-center space-x-2 text-slate-800">
+<!-- Signal Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.2.2-.2.51 0 .71.1.1.23.15.35.15.13 0 .26-.05.35-.15l1.9-1.9C8.36 19.38 10.1 20 12 20s3.64-.62 5.05-1.79l1.9 1.9c.1.1.23.15.35.15s.26-.05.35-.15c.2-.2.2-.51 0-.71l-.62-1.79C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"></path>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A17.93 17.93 0 0012 4z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-5 h-2.5 border border-slate-700 rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-slate-800 rounded-2xs"></div>
+</div>
+</div>
+</div>
+<!-- Club Header Title & Badge -->
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-bold tracking-wider text-slate-500 uppercase">Club Deportivo Oficial</span>
+<span class="text-[11px] font-medium bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md">Acceso</span>
+</div>
+<!-- Informative shield status icon -->
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200">
+<svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h1 class="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">Identificación</h1>
+</header>
+<!-- END: TopAppHeaderSection -->
+<!-- BEGIN: MainContentArea -->
+<main class="flex-1 px-5 py-4 flex flex-col justify-center" data-purpose="login-container">
+<!-- Main Form Card (matching screen.png rounded card styling) -->
+<section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col items-center">
+<!-- Club Shield / Photo Container (Boceto 'Foto') -->
+<div class="w-24 h-24 mb-5 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 flex flex-col items-center justify-center shadow-inner relative group" data-purpose="club-logo-placeholder">
+<div class="w-16 h-16 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+<svg class="w-9 h-9" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+</svg>
+</div>
+<!-- Club Subtitle Pin -->
+<span class="absolute -bottom-2 text-[10px] font-bold uppercase tracking-wider bg-slate-800 text-white px-2 py-0.5 rounded-full shadow-xs">C.D. Rayo</span>
+</div>
+<!-- Section Titles -->
+<div class="text-center mb-6">
+<h2 class="text-xl font-bold text-slate-900 tracking-tight">Iniciar Sesión</h2>
+<p class="text-xs text-slate-500 mt-1 font-normal">Introduce tus credenciales de técnico o jugador</p>
+</div>
+<!-- Login Form Form Controls -->
+<form action="#" class="w-full space-y-4" data-purpose="form-login" method="POST">
+<!-- Field: Usuario -->
+<div class="space-y-1.5" data-purpose="input-group-usuario">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500" for="username">
+              Usuario
+            </label>
+<div class="relative rounded-xl shadow-xs">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+</svg>
+</div>
+<input class="block w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors" id="username" name="username" placeholder="ej. tecnico@club.es" required="" type="text"/>
+</div>
+</div>
+<!-- Field: Contraseña -->
+<div class="space-y-1.5" data-purpose="input-group-contrasena">
+<div class="flex items-center justify-between">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500" for="password">
+                Contraseña
+              </label>
+<a class="text-[11px] text-blue-600 hover:text-blue-700 font-medium" href="#">¿Olvidaste?</a>
+</div>
+<div class="relative rounded-xl shadow-xs">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+</svg>
+</div>
+<input class="block w-full pl-11 pr-11 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors" id="password" name="password" placeholder="••••••••••••" required="" type="password"/>
+<!-- Toggle Visibility Button Placeholder -->
+<button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Submit Button: INICIAR -->
+<div class="pt-2">
+<button class="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition duration-150 ease-in-out text-sm tracking-wide" type="submit">
+<span>INICIAR</span>
+<svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</form>
+<!-- Informative note underneath -->
+<p class="text-[11px] text-slate-400 text-center mt-5">
+          Acceso protegido. Datos gestionados bajo normativa federativa.
+        </p>
+</section>
+</main>
+<!-- END: MainContentArea -->
+<!-- BEGIN: BottomNavigationSection -->
+<nav class="w-full bg-[#0f172a] text-slate-400 py-2.5 px-3 flex justify-around items-center select-none border-t border-slate-800" data-purpose="bottom-navbar">
+<!-- Tab 1: Cuenta (Activo) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-white group" data-purpose="nav-item-active" href="#">
+<div class="relative">
+<svg class="w-5 h-5 text-white stroke-[2.2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-[#0f172a]"></span>
+</div>
+<span class="text-[10px] font-bold tracking-tight mt-1 text-white">Cuenta</span>
+</a>
+<!-- Tab 2: Gestión -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors" data-purpose="nav-item" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" stroke-linecap="round" stroke-linejoin="round" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" stroke-linecap="round" stroke-linejoin="round" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" stroke-linecap="round" stroke-linejoin="round" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" stroke-linecap="round" stroke-linejoin="round" width="7" x="3" y="14"></rect>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Gestión</span>
+</a>
+<!-- Tab 3: Partido -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors" data-purpose="nav-item" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"></circle>
+<polygon fill="currentColor" points="10 8 16 12 10 16 10 8" stroke="none"></polygon>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Partido</span>
+</a>
+<!-- Tab 4: Plantilla -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors" data-purpose="nav-item" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Plantilla</span>
+</a>
+</nav>
+<!-- END: BottomNavigationSection -->
+</div>
+<!-- END: MobileFrameContainer -->
+</body></html>

@@ -1,0 +1,3 @@
+pan 3 leche 2.5 cocacola 1
+agua 1 pan 1.5
+huevos 4.5

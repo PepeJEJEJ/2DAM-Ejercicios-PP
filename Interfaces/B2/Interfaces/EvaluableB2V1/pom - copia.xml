@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.davante.di</groupId>
+    <artifactId>Ejercicio8C_NotaFinal</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- FlatLaf: aspecto moderno de la ventana (tema claro y oscuro) -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.7.2</version>
+        </dependency>
+        <!-- MigLayout: coloca los componentes de la ventana -->
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-swing</artifactId>
+            <version>11.4.3</version>
+        </dependency>
+        <!-- JUnit: pruebas unitarias. Con scope "test" solo se usa al pasar
+             los tests y no va dentro de la aplicación -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>by.legan.library</groupId>
+            <artifactId>NetEngine</artifactId>
+            <version>1.9.1</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Surefire: ejecuta los tests al compilar. Si alguno falla, no se genera nada -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+
+            <!-- Assembly: genera un segundo JAR, el que termina en -jar-with-dependencies.jar,
+                 que lleva dentro las librerías (FlatLaf, MigLayout). Es el que funciona
+                 fuera del IDE y el que se convierte en .exe -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- La clase con el main, sacada de <properties> -->
+                            <mainClass>${exec.mainClass}</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Launch4j: genera el .exe metiendo dentro el JAR con dependencias.
+                 El plugin descarga Launch4j solo: no hay que instalarlo ni abrirlo.
+                 Va DESPUÉS del anterior: los dos se ejecutan al compilar y en el
+                 orden en que están escritos, y este necesita el JAR ya hecho -->
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.7.0</version>
+                <executions>
+                    <execution>
+                        <id>crear-exe</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Aplicación de ventana: sin consola negra -->
+                            <headerType>gui</headerType>
+                            <!-- El JAR que se mete dentro del .exe -->
+                            <jar>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</jar>
+                            <!-- Dónde se crea el .exe. En dist/ y no en target/: Clean and Build
+                                 vacía target y se llevaría por delante la carpeta jre -->
+                            <outfile>${project.basedir}/dist/NotaFinal.exe</outfile>
+                            <!-- Título de la ventana de error si no encuentra Java -->
+                            <errTitle>Nota final</errTitle>
+                            <!-- Icono del .exe, junto al pom.xml. Si no hay icono, se borra esta línea -->
+                            <icon>${project.basedir}/icono.ico</icon>
+                            <jre>
+                                <!-- Java se busca en la carpeta jre que está junto al .exe -->
+                                <path>jre</path>
+                            </jre>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <!-- Caracteres en UTF-8 para que acepte tildes, ñ, etc. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Java 21 o posterior -->
+        <maven.compiler.release>21</maven.compiler.release>
+        <!-- Clase principal [paquete.clase] -->
+        <exec.mainClass>com.davante.di.ejercicio8c_notafinal.App</exec.mainClass>
+    </properties>
+</project>

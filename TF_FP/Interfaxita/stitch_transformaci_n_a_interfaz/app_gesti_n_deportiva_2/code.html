@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Gestión Deportiva - Club Oficial</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Ocultar barra de desplazamiento manteniendo funcionalidad */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-slate-200 text-slate-900 min-h-screen flex items-center justify-center p-0 sm:p-4 font-sans antialiased">
+<!-- Contenedor Dispositivo Móvil -->
+<div class="w-full max-w-[420px] h-[860px] max-h-screen bg-slate-50 rounded-none sm:rounded-[36px] shadow-sm flex flex-col border border-slate-300/80 overflow-hidden relative">
+<!-- BEGIN: iOS Status Bar -->
+<header class="h-11 px-6 pt-3 flex justify-between items-center text-xs font-medium text-slate-600 shrink-0 select-none">
+<span class="tracking-tight">09:41</span>
+<div class="w-20 h-4 bg-slate-900/10 rounded-full hidden sm:block"></div>
+<div class="flex items-center space-x-2">
+<svg class="w-3.5 h-3.5 text-slate-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"></path></svg>
+<svg class="w-3.5 h-3.5 text-slate-700" fill="currentColor" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"></path></svg>
+<div class="w-5 h-2.5 border border-slate-700 rounded-[3px] p-0.5 flex items-center">
+<div class="h-full w-full bg-slate-800 rounded-[1px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Main Content Container -->
+<main class="flex-1 overflow-y-auto no-scrollbar relative" id="screens-container">
+<!-- ============================================== -->
+<!-- VISTA 1: DASHBOARD / GESTIÓN DEPORTIVA         -->
+<!-- ============================================== -->
+<section class="screen-view p-5 space-y-5" id="view-dashboard">
+<!-- Encabezado Sobrio -->
+<div class="flex items-center justify-between pt-1">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Club Deportivo Oficial</span>
+<span class="text-[10px] bg-slate-200/80 text-slate-700 font-medium px-2 py-0.5 rounded">Técnico</span>
+</div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight mt-0.5">Gestión Deportiva</h1>
+</div>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300 transition" onclick="switchTab('login')" title="Cerrar sesión">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Tarjeta Próximo Partido -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-slate-500">Próximo Partido</span>
+<span class="text-[11px] font-medium bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded border border-blue-100">Jornada 14</span>
+</div>
+<div>
+<h2 class="text-base font-semibold text-slate-900">CF Rayo vs AD San Juan</h2>
+<div class="flex items-center gap-2 text-xs text-slate-500 mt-1">
+<span class="">Domingo · 11:30 AM</span>
+<span class="">•</span>
+<span class="">Campo Municipal 2</span>
+</div>
+</div>
+</div>
+<!-- Módulos del Sistema -->
+<div class="space-y-2.5">
+<p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-0.5">Módulos del Sistema</p>
+<!-- 1. CONVOCATORIAS -->
+<button class="w-full bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between text-left hover:border-slate-300 transition group" onclick="switchTab('convocatoria')">
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 group-hover:text-blue-700 group-hover:border-blue-200 group-hover:bg-blue-50 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition">Convocatorias</h3>
+<p class="text-xs text-slate-500">Listas oficiales y equipaciones de juego</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<!-- 2. PARTIDOS -->
+<button class="w-full bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between text-left hover:border-slate-300 transition group" onclick="switchTab('partido')">
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 group-hover:text-blue-700 group-hover:border-blue-200 group-hover:bg-blue-50 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition">Partidos</h3>
+<p class="text-xs text-slate-500">Marcadores, actas, goles y tarjetas</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<!-- 3. ESTADÍSTICAS -->
+<div class="w-full bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between text-left cursor-pointer hover:border-slate-300 transition group">
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 group-hover:text-blue-700 group-hover:border-blue-200 group-hover:bg-blue-50 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition">Estadísticas</h3>
+<p class="text-xs text-slate-500">Rendimiento global del equipo</p>
+</div>
+</div>
+<span class="text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">82% Vic.</span>
+</div>
+<!-- 4. GENERAR NOTICIA -->
+<div class="w-full bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between text-left cursor-pointer hover:border-slate-300 transition group">
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 group-hover:text-blue-700 group-hover:border-blue-200 group-hover:bg-blue-50 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition">Generar Noticia</h3>
+<p class="text-xs text-slate-500">Crónica y comunicación del club</p>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- VISTA 2: PARTIDO / ACTA                         -->
+<!-- ============================================== -->
+<section class="screen-view hidden p-5 space-y-4" id="view-partido">
+<div class="flex items-center justify-between pt-1">
+<div>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Acta Oficial</span>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight mt-0.5">Partido</h1>
+</div>
+<span class="px-2.5 py-1 bg-red-50 text-red-700 border border-red-200 text-xs font-semibold rounded-md">
+          Min 78'
+        </span>
+</div>
+<form class="space-y-3.5" onsubmit="event.preventDefault(); showNotice('Acta guardada correctamente');">
+<!-- Marcador -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 text-center">
+<p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Marcador en directo</p>
+<div class="text-sm font-semibold text-slate-800 flex items-center justify-center space-x-2">
+<span class="">Equipo 1</span>
+<span class="text-[10px] text-slate-400 font-bold px-1.5 py-0.5 bg-slate-100 rounded">VS</span>
+<span class="">Equipo 2</span>
+</div>
+<div class="mt-3.5 pt-3.5 border-t border-slate-100 flex items-center justify-center gap-3">
+<input class="w-14 h-14 text-center text-2xl font-bold bg-slate-50 border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" min="0" type="number" value="2">
+<span class="text-xl font-medium text-slate-400">—</span>
+<input class="w-14 h-14 text-center text-2xl font-bold bg-slate-50 border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" min="0" type="number" value="1">
+</div>
+</div>
+<!-- Goleadores -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2.5">
+<div class="flex justify-between items-center">
+<label class="text-xs font-semibold text-slate-800 uppercase tracking-wider">Goleador</label>
+<span class="text-xs text-slate-500">3 registrados</span>
+</div>
+<input class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" placeholder="Nombre del goleador y minuto" type="text" value="9. Alejandro Gómez (34', 62')">
+<div class="flex flex-wrap gap-1.5 pt-0.5">
+<span class="text-[11px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">⚽ A. Gómez 34'</span>
+<span class="text-[11px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">⚽ A. Gómez 62'</span>
+<span class="text-[11px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">⚽ Rival 45'</span>
+</div>
+</div>
+<!-- Tarjetas -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2.5">
+<label class="text-xs font-semibold text-slate-800 uppercase tracking-wider block">Tarjetas</label>
+<input class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" placeholder="Jugador y tipo de tarjeta" type="text" value="4. Marcos Ruiz (Amarilla 41'), 8. Leo Soto (Roja 70')">
+<div class="flex items-center space-x-3 pt-0.5 text-xs text-slate-600">
+<span class="flex items-center space-x-1.5">
+<span class="w-3 h-4 bg-amber-400 border border-amber-500 rounded-[2px] inline-block"></span>
+<span class="">1 Amarilla</span>
+</span>
+<span class="flex items-center space-x-1.5">
+<span class="w-3 h-4 bg-red-600 border border-red-700 rounded-[2px] inline-block"></span>
+<span class="">1 Roja</span>
+</span>
+</div>
+</div>
+<!-- Botón Guardar -->
+<button class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg text-xs uppercase tracking-wider transition" type="submit">
+          Guardar Partido
+        </button>
+</form>
+</section>
+<!-- ============================================== -->
+<!-- VISTA 3: CONVOCATORIA                           -->
+<!-- ============================================== -->
+<section class="screen-view hidden p-5 space-y-4" id="view-convocatoria">
+<div class="flex items-center justify-between pt-1">
+<div>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Plantilla Oficial</span>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight mt-0.5">Convocatoria</h1>
+</div>
+<span class="text-xs bg-slate-100 border border-slate-200 px-2.5 py-1 rounded text-slate-700 font-semibold">18 Convocados</span>
+</div>
+<!-- Lista de Jugadores -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Jugadores Convocados</span>
+<button class="text-xs text-blue-700 font-medium hover:underline">+ Añadir</button>
+</div>
+<!-- Jugador 1 -->
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center border border-slate-200">1</span>
+<div>
+<p class="text-xs font-semibold text-slate-900">Jugador 1 <span class="font-normal text-slate-500">(Portero)</span></p>
+<p class="text-[11px] text-slate-500">Disponible</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">POR</span>
+</div>
+<!-- Jugador 2 -->
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center border border-slate-200">2</span>
+<div>
+<p class="text-xs font-semibold text-slate-900">Jugador 2 <span class="font-normal text-slate-500">(Defensa Central)</span></p>
+<p class="text-[11px] text-slate-500">Capitán</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">DEF</span>
+</div>
+<!-- Jugador 3 -->
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center border border-slate-200">3</span>
+<div>
+<p class="text-xs font-semibold text-slate-900">Jugador 3 <span class="font-normal text-slate-500">(Centrocampista)</span></p>
+<p class="text-[11px] text-slate-500">Disponible</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">MED</span>
+</div>
+<!-- Jugador 4 -->
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center border border-slate-200">4</span>
+<div>
+<p class="text-xs font-semibold text-slate-900">Jugador 4 <span class="font-normal text-slate-500">(Delantero Centro)</span></p>
+<p class="text-[11px] text-amber-600">Apercibido</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">DEL</span>
+</div>
+</div>
+<!-- Equipación -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-800 uppercase tracking-wider">Equipación Oficial</span>
+<span class="text-[11px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">1ª Equipación</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-center space-x-2.5">
+<div class="w-5 h-5 rounded-full bg-white border border-slate-300"></div>
+<div>
+<p class="text-[10px] uppercase font-semibold text-slate-500">Camiseta</p>
+<p class="text-xs font-semibold text-slate-800">Blanca</p>
+</div>
+</div>
+<div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-center space-x-2.5">
+<div class="w-5 h-5 rounded-full bg-red-600 border border-red-700"></div>
+<div>
+<p class="text-[10px] uppercase font-semibold text-slate-500">Pantalón</p>
+<p class="text-xs font-semibold text-slate-800">Rojo</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Botón Guardar / Crear -->
+<button class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg text-xs uppercase tracking-wider transition" onclick="showNotice('Convocatoria actualizada con éxito')" type="button">
+        Guardar / Crear Convocatoria
+      </button>
+</section>
+<!-- ============================================== -->
+<!-- VISTA 4: LOGIN / ACCESO                         -->
+<!-- ============================================== -->
+<section class="screen-view hidden p-5 flex flex-col justify-between h-full" id="view-login">
+<div class="text-center pt-4">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Club Deportivo</span>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight mt-0.5">Acceso al Sistema</h1>
+<p class="text-xs text-slate-500 mt-1">Gestión interna y técnica</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-xl p-5 space-y-4 my-auto">
+<!-- Identificador / Escudo -->
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-slate-500 text-center">
+<svg class="w-6 h-6 stroke-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[9px] font-semibold text-slate-400 mt-1">FOTO</span>
+</div>
+</div>
+<div class="space-y-3">
+<div>
+<label class="block text-xs font-medium text-slate-700 mb-1">Usuario</label>
+<input class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" placeholder="Introduce tu usuario" type="text" value="director_tecnico">
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 mb-1">Contraseña</label>
+<input class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:border-slate-800 focus:bg-white" placeholder="Introduce tu contraseña" type="password" value="••••••••••••">
+</div>
+</div>
+<button class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg text-xs uppercase tracking-wider transition" onclick="switchTab('dashboard')" type="button">
+          Iniciar Sesión
+        </button>
+</div>
+<p class="text-center text-[11px] text-slate-400 pb-2">Sistema Oficial v2.4</p>
+</section>
+</main>
+<!-- END: Main Content Container -->
+<!-- Feedback Toast Simple -->
+<div class="hidden absolute top-12 left-4 right-4 bg-slate-900 text-white px-3.5 py-2 rounded-lg text-xs font-medium shadow-sm flex items-center justify-between z-50" id="toast">
+<span id="toast-message" class="">Mensaje del sistema</span>
+<button class="ml-2 text-slate-400 hover:text-white" onclick="document.getElementById('toast').classList.add('hidden')">✕</button>
+</div>
+<!-- BEGIN: Bottom Navigation Bar -->
+<nav class="h-14 bg-slate-900 border-t border-slate-800 px-4 flex items-center justify-around shrink-0 select-none z-50">
+<!-- Login / Cuenta -->
+<button class="nav-tab flex flex-col items-center justify-center text-slate-400 hover:text-white transition w-16" id="tab-btn-login" onclick="switchTab('login')">
+<svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium">Cuenta</span>
+</button>
+<!-- Gestión -->
+<button class="nav-tab flex flex-col items-center justify-center text-white font-semibold transition w-16" id="tab-btn-dashboard" onclick="switchTab('dashboard')">
+<svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px]">Gestión</span>
+</button>
+<!-- Partido -->
+<button class="nav-tab flex flex-col items-center justify-center text-slate-400 hover:text-white transition w-16" id="tab-btn-partido" onclick="switchTab('partido')">
+<svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium">Partido</span>
+</button>
+<!-- Plantilla / Convocatoria -->
+<button class="nav-tab flex flex-col items-center justify-center text-slate-400 hover:text-white transition w-16" id="tab-btn-convocatoria" onclick="switchTab('convocatoria')">
+<svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium">Plantilla</span>
+</button>
+</nav>
+<!-- END: Bottom Navigation Bar -->
+</div>
+<script>
+  function switchTab(screenName) {
+    const views = ['login', 'dashboard', 'partido', 'convocatoria'];
+    views.forEach(v => {
+      const viewEl = document.getElementById(`view-${v}`);
+      const tabBtn = document.getElementById(`tab-btn-${v}`);
+      
+      if (v === screenName) {
+        viewEl.classList.remove('hidden');
+        if (tabBtn) {
+          tabBtn.classList.remove('text-slate-500', 'font-medium');
+          tabBtn.classList.add('text-slate-900', 'font-semibold');
+        }
+      } else {
+        viewEl.classList.add('hidden');
+        if (tabBtn) {
+          tabBtn.classList.remove('text-slate-900', 'font-semibold');
+          tabBtn.classList.add('text-slate-500', 'font-medium');
+        }
+      }
+    });
+
+    const container = document.getElementById('screens-container');
+    if (container) container.scrollTop = 0;
+  }
+
+  function showNotice(msg) {
+    const toast = document.getElementById('toast');
+    const text = document.getElementById('toast-message');
+    text.innerText = msg;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 2200);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    switchTab('dashboard');
+  });
+</script>
+
+
+</body></html>

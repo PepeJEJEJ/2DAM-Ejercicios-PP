@@ -1,0 +1,69 @@
+Una empresa hace cada noche una copia de seguridad de cuatro carpetas de su servidor. Hasta ahora, hacían las copias de una en una y tardaban demasiado. Te encargan un programa que simule la copia con hilos, para comprobar cuánto tiempo se ahorra copiando varias carpetas a la vez.
+
+No se copia nada de verdad: copiar un fichero se simula con una espera. No hay que acceder a ficheros, ni usar File ni Buffered.
+
+Las carpetas
+Todos los ficheros de una carpeta pesan lo mismo. Las dos fases copian exactamente lo mismo, así que sus tiempos se pueden comparar.
+
+Carpeta	Ficheros	MB por fichero
+Sistema	4	10
+Documentos	6	5
+Fotos	8	8
+Musica	5	6
+La clase Copia
+Es un hilo que copia una carpeta. Recibe en el constructor el nombre de la carpeta, cuántos ficheros tiene y cuántos MB pesa cada uno, y al ejecutarse los copia de uno en uno:
+
+Copiar un fichero tarda 50 milisegundos por cada MB que pesa (un fichero de 10 MB tarda 500 ms).
+Cada vez que copia un fichero, lo dice por consola: qué carpeta, qué fichero de cuántos y cuánto pesaba.
+Va sumando los MB que copia. Al terminar, dice que la carpeta está terminada, con sus ficheros y sus MB.
+El main tiene que poder consultar los MB copiados cuando el hilo haya terminado.
+Las cuatro carpetas se copian con la misma clase.
+
+Lo que hace Main
+Fase 1. Copia en paralelo.
+
+La carpeta Sistema se copia primero y sola: hasta que no termina, no empieza ninguna otra.
+Después, las otras tres a la vez.
+Cuando han terminado todas, muestra un resumen: los MB de cada carpeta, el total y el tiempo que ha tardado la fase entera en milisegundos (System.currentTimeMillis()).
+Fase 2. Copia de una en una. Vuelve a copiar las cuatro carpetas, pero ahora una detrás de otra: no empieza una hasta que no ha terminado la anterior. Mide también el tiempo.
+
+Comparación. Muestra los dos tiempos y cuál ha sido más rápida, y por cuánto.
+
+Comentarios
+Pon un comentario breve en cada parte del código que diga qué hace. Basta con una línea.
+
+Si no consigues completar el ejercicio, haz la parte que puedas: cada parte puntúa por separado.
+
+Ejemplo de ejecución
+Los MB son siempre los mismos. El orden de las líneas de la fase 1 y los milisegundos exactos cambian un poco en cada ejecución.
+
+=== COPIA EN PARALELO ===
+[Sistema] fichero 1 de 4 copiado (10 MB)
+[Sistema] fichero 2 de 4 copiado (10 MB)
+[Sistema] fichero 3 de 4 copiado (10 MB)
+[Sistema] fichero 4 de 4 copiado (10 MB)
+[Sistema] terminada: 4 ficheros, 40 MB
+[Documentos] fichero 1 de 6 copiado (5 MB)
+[Musica] fichero 1 de 5 copiado (6 MB)
+[Fotos] fichero 1 de 8 copiado (8 MB)
+[Documentos] fichero 2 de 6 copiado (5 MB)
+...
+[Fotos] terminada: 8 ficheros, 64 MB
+=== RESUMEN ===
+Sistema: 40 MB
+Documentos: 30 MB
+Fotos: 64 MB
+Musica: 30 MB
+Total: 164 MB en 5213 ms
+
+=== COPIA DE UNA EN UNA ===
+[Sistema] fichero 1 de 4 copiado (10 MB)
+...
+[Musica] terminada: 5 ficheros, 30 MB
+=== COMPARACION ===
+En paralelo: 5213 ms
+De una en una: 8222 ms
+En paralelo ha sido 3009 ms más rápida
+Condiciones de Vericode
+La clase principal se llama Main, y las clases van sin package.
+El programa tarda unos catorce segundos en terminar: es normal.

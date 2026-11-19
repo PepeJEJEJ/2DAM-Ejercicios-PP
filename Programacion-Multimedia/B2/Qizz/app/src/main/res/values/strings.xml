@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qizz</string>
+
+    <!-- Main Activity -->
+    <string name="titulo_app">Juego de Preguntas</string>
+    <string name="hint_nombre">Tu nombre</string>
+    <string name="btn_jugar">Jugar</string>
+    <string name="btn_ranking">Ver ranking</string>
+
+    <!-- Juego Activity -->
+    <string name="contador_pregunta">Pregunta %1$d de %2$d</string>
+    <string name="puntos">Puntos: %1$d / 10</string>
+    <string name="tiempo_restante">Tiempo: %1$ds</string>
+    <string name="respuesta_correcta">¡Respuesta correcta!</string>
+    <string name="respuesta_incorrecta">Respuesta incorrecta</string>
+
+    <!-- Resultado Activity -->
+    <string name="titulo_resultado">Resultado</string>
+    <string name="lbl_nombre">Jugador: %1$s</string>
+    <string name="lbl_puntuacion">%1$d / 10</string>
+    <string name="btn_ver_ranking">Ver ranking</string>
+    <string name="btn_volver_inicio">Volver al inicio</string>
+
+    <!-- Ranking Activity -->
+    <string name="titulo_ranking">Ranking de partidas</string>
+    <string name="ranking_vacio">No hay partidas registradas</string>
+</resources>
